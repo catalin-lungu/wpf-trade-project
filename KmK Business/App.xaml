@@ -1,0 +1,14 @@
+﻿<Application x:Class="KmK_Business.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/KmK Business;component/languages/Dictionary.en-UK.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/KmK Business;component/Style/ControlsStyle.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

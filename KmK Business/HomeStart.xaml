@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="KmK_Business.HomeStart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:l="clr-namespace:KmK_Business.Convertor"
+             mc:Ignorable="d" 
+             d:DesignHeight="475" Width="900" HorizontalAlignment="Left">
+    <UserControl.Resources>
+        <l:BoolToVisibilityConverter x:Key="converter" />
+    </UserControl.Resources>
+    
+    <Grid Margin="0,0,0,-175" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="224"/>
+            <ColumnDefinition Width="Auto" MinWidth="112.699"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="254.08"/>
+            <RowDefinition Height="36.981"/>
+        </Grid.RowDefinitions>
+        
+        <Image Grid.RowSpan="2" Source="/imgs/HomeStart/startup_header.png" Stretch="UniformToFill" Height="176.76" VerticalAlignment="Top" HorizontalAlignment="Left" Width="224"/>
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="1" HorizontalAlignment="Right" Width="102.699" Margin="0,10,284,0" Grid.RowSpan="2" Height="68.92" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <Image Source="/imgs/HomeStart/startup_open_db.png" Stretch="UniformToFill" Margin="43,10,7,0" Height="45.92" VerticalAlignment="Top"/>
+        </Border >
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="101.349" Margin="0,98,283,-82.019" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="275.08" VerticalAlignment="Top">
+            <Image Source="/imgs/HomeStart/startup_login.png" Stretch="UniformToFill" Margin="10,10,10,0" Height="91.08" VerticalAlignment="Top" HorizontalAlignment="Right" Width="70.058"/>
+        </Border>
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="1" Grid.Row="2" Margin="28.35,131.699,283,-173.939" Grid.ColumnSpan="2">
+            <Image Source="/imgs/HomeStart/startup_create_db.png" Stretch="UniformToFill" Width="60.526" Margin="10,5,8.823,5" HorizontalAlignment="Center" Height="62.221"/>
+        </Border>
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="2" Width="423.301" HorizontalAlignment="Left" Margin="36,10,-159.301,0" Height="68.92" VerticalAlignment="Top" Grid.RowSpan="2">
+            <Grid Width="400" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="370"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>    
+                
+                <TextBox Grid.Row="0" Margin="0,10,0,0" Grid.RowSpan="2" Height="30" VerticalAlignment="Top" 
+                         Text="{Binding DatabaseName}" IsReadOnly="True"/>
+                <Button Content="   ..." Command="{Binding OpenDBCommand}"
+                        HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontFamily="Segoe UI" RenderTransformOrigin="0.305,0.809" Margin="0,10,0,0" Height="30" Grid.Column="1" Width="100"/>
+
+                <Label Content="{DynamicResource dbRequiresSignIn}" Visibility="{Binding DBSignInVisibility, Converter={StaticResource converter}}"
+                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="404" Margin="0"/>
+                
+            </Grid>
+            
+        </Border>
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="2" Grid.Row="1" Width="422.301" HorizontalAlignment="Left" Margin="37,98,-159.301,-82.019" Grid.RowSpan="2">
+            <Grid Width="350" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="{DynamicResource userName}" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding UserName}" Grid.Row="1" Height="30"/>
+                <CheckBox Content="{DynamicResource remember}" Grid.Row="2" Margin="0,5,0,0"/>
+
+				<TextBlock Text="{DynamicResource password}" Grid.Row="3" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                <TextBox Text="{Binding Password}" Grid.Row="4" Margin="0,10,0,0" Height="30"  />
+                <CheckBox Content="{DynamicResource remember}" Grid.Row="5" Margin="0,5,0,0"/>
+                
+                <Button Content="{DynamicResource login}" Command="{Binding LoginCommand}"
+                        Grid.Row="6" Margin="0,10,0,0" Height="30"/>
+
+                <Button Grid.Row="7" Cursor="Hand" Margin="0,7,0,0" Width="210" HorizontalAlignment="Right" Height="50"
+                       Command="{Binding RecoverPasswordCommand}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <TextBlock Text="{DynamicResource canNotLogin}" TextWrapping="WrapWithOverflow">
+                                <ContentPresenter />
+                            </TextBlock>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="Blue" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+
+        </Border>
+
+        <Border BorderBrush="#FFAAA6A6" BorderThickness="2" Grid.Column="2" Grid.Row="2" Width="422.301" HorizontalAlignment="Left" Margin="36,131.699,-158.301,-173.939">
+            <Button Content="{DynamicResource createNewDB}" Height="30" 
+                    VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="170" Margin="1,10,10,5"
+                    Command="{Binding CreateDBCommand}"/>
+        </Border>
+
+    </Grid>
+</UserControl>

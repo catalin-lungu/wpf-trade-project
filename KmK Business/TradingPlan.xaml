@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="KmK_Business.TradingPlan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="clr-namespace:KmK_Business.Convertor"
+             xmlns:self="clr-namespace:KmK_Business.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <l:BoolToVisibilityConverter x:Key="converter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        
+        <!--tree navigator-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+           
+            <Label Content="navi"/>
+            
+            <Label Grid.Row="1" Content="xl"/>
+
+            <TreeView Grid.Row="2" ItemsSource="{Binding TreeSource}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type self:TradingPlans}" ItemsSource="{Binding Plans}">
+                        <StackPanel Orientation="Horizontal">                        
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type self:Plan}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>                    
+               </TreeView.Resources>
+            </TreeView>
+            
+        </Grid>
+
+            
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
+			ResizeBehavior="PreviousAndNext"/>
+
+        <!--Navigator-->
+        <ContentControl Grid.Row="2" x:Name="ContentNavigator" Content="{Binding MenuNavigator}"
+			HorizontalContentAlignment="Stretch" 
+			VerticalContentAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+
+        <Grid Grid.RowSpan="3" Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.ColumnSpan="2" Background="#FFE8E8E8" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/imgs/TradingPlan/trading_plan.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"/>
+                <Label Content="{Binding TopStatusNavigator}" Grid.Row="1"/>
+            </Grid>
+
+
+            <Label Content="test" Grid.Row="1"
+                   Visibility="{Binding TradingPlanMainTestVisibility, Converter={StaticResource converter}}"/>
+
+            <TabControl Grid.Row="1" Visibility="{Binding TradingPlanItemTestVisibility, Converter={StaticResource converter}}">
+                
+                <TabItem Header="{DynamicResource details}">
+                    fsdgfsg
+                </TabItem>
+                
+                <TabItem Header="{DynamicResource aboutMe}">
+                    
+                </TabItem>
+                
+                <TabItem Header="{DynamicResource goal}"></TabItem>
+                <TabItem Header="{DynamicResource strategy}"></TabItem>
+                <TabItem Header="{DynamicResource rules}"></TabItem>
+                <TabItem Header="{DynamicResource backTesting}"></TabItem>
+                <TabItem Header="{DynamicResource liveTesting}"></TabItem>
+                
+            </TabControl>
+            
+        </Grid>
+        
+    </Grid>
+</UserControl>

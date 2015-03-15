@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="KmK_Business.MenuNavigator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:l="clr-namespace:KmK_Business.Convertor"
+             mc:Ignorable="d" 
+             d:DesignHeight="300"  d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <l:ToUpperCaseConverter x:Key="toUpperConverter" />
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Button Command="{Binding HomeCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_home.png" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource home}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid> 
+        </Button>
+
+        <Button Grid.Row="1" Command="{Binding TradingPlanCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_trading_plan.png" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource tradingPlan}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid> 
+        </Button>
+
+        <Button Grid.Row="2" Command="{Binding TradingJournalCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_trading_journal.png" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource tradingJournal}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid> 
+        </Button>
+
+        <Button Grid.Row="3" Command="{Binding TradingToolsCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_trading_tools.png" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource tradingTools}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid> 
+		</Button>
+
+        <Button Grid.Row="4" Command="{Binding ReportsCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_reports.png" VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource reports}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid> 
+        </Button>
+
+        <Button Grid.Row="5" Command="{Binding TasksCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+			<Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+				<Image Source="imgs/Navigator/sections_navigator_tasks.png" VerticalAlignment="Center" Margin="5" />
+                <TextBlock Text="{DynamicResource tasks}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+			</Grid>            
+        </Button>
+
+        <Button Grid.Row="6" Command="{Binding ContactsCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Left">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="80*"/>
+				</Grid.ColumnDefinitions>
+                <Image Source="imgs/Navigator/sections_navigator_contacts.png"  VerticalAlignment="Center" Margin="5"/>
+                <TextBlock Text="{DynamicResource contacts}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+			</Grid>
+        </Button>
+
+        <Button Grid.Row="7" Command="{Binding KnowledgebaseCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+			<Grid HorizontalAlignment="Left">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="20*"/>
+						<ColumnDefinition Width="80*"/>
+					</Grid.ColumnDefinitions>
+				<Image Source="imgs/Navigator/sections_navigator_knowledgebase.png"  VerticalAlignment="Center" Margin="5"/>
+				<TextBlock Text="{DynamicResource knowledgeBase}" Margin="5" VerticalAlignment="Center" Grid.Column="1"/>
+			</Grid>
+        </Button>
+
+    </Grid>
+</UserControl>

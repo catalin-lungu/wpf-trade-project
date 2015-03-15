@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="windowTitle">KmK Trading</system:String>
+    
+    <!--Top menu-->
+    <system:String x:Key="file">File</system:String>
+    <system:String x:Key="edit">Edit</system:String>
+    <system:String x:Key="navigator">Navigator</system:String>
+    <system:String x:Key="view">View</system:String>
+    <system:String x:Key="accounts">Accounts</system:String>
+    <system:String x:Key="trading">Trading</system:String>
+    <system:String x:Key="reports">Reports</system:String>
+    <system:String x:Key="tasks">Tasks</system:String>
+    <system:String x:Key="contacts">Contacts</system:String>
+    <system:String x:Key="knowledgeBase">Knowledge-Base</system:String>
+    <system:String x:Key="help">Help</system:String>
+
+    <!--Navigator menu-->
+    <system:String x:Key="home">Home</system:String>
+    <system:String x:Key="tradingPlan">Trading Plan</system:String>
+    <system:String x:Key="tradingJournal">Trading Journal</system:String>
+    <system:String x:Key="tradingTools">Trading Tools</system:String>
+
+
+    <system:String x:Key="currentDatabase">Current Database: </system:String>
+
+    <system:String x:Key="dbRequiresSignIn">This database requires you to sign in with your username and password.</system:String>
+    <system:String x:Key="userName">User Name</system:String>
+    <system:String x:Key="remember">Remember</system:String>
+    <system:String x:Key="password">Password</system:String>
+    <system:String x:Key="login">Login</system:String>
+    <system:String x:Key="canNotLogin">I can not access my database because;  I lost or I can't remember my password. My password doesn't work?</system:String>
+    <system:String x:Key="createNewDB">Create New Database</system:String>
+    <system:String x:Key="database">Database</system:String>
+    <system:String x:Key="create">Create</system:String>
+    
+    <!--Home-->
+    <system:String x:Key="trading2">TRADING</system:String>
+    <system:String x:Key="accounts2">ACCOUNTS</system:String>
+    <system:String x:Key="journal">JOURNAL</system:String>
+    <system:String x:Key="reports2">REPORTS</system:String>
+    <system:String x:Key="latest">LATEST</system:String>
+    <system:String x:Key="addedTasks">ADDED TASKS</system:String>
+    <system:String x:Key="contacts2">CONTACTS</system:String>
+    
+    
+    <!--Trading plan-->
+    <system:String x:Key="details">Details</system:String>
+    <system:String x:Key="aboutMe">About Me</system:String>
+    <system:String x:Key="goal">Goal</system:String>
+    <system:String x:Key="strategy">Strategy</system:String>
+    <system:String x:Key="rules">Rules</system:String>
+    <system:String x:Key="backTesting">Back-Testing</system:String>
+    <system:String x:Key="liveTesting">Live-Testing</system:String>
+
+    <system:String x:Key="testTradingPlans">TEST TRADING PLANS</system:String>
+    <system:String x:Key="validatedTradingPlan">VALIDATED TRADING PLANS</system:String>
+</ResourceDictionary>

@@ -1,0 +1,261 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KmK_Business" x:Class="KmK_Business.Home" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+	
+	 <UserControl.Resources>
+        <Style TargetType="Separator">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Separator}">
+                        <Rectangle Height="{TemplateBinding Height}"  
+                           Fill="#FF304B63" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+	<Grid>
+                
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="auto"/>
+			<ColumnDefinition Width="auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+        
+		<Grid.RowDefinitions>
+			<RowDefinition Height="60*"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="40*"/>
+		</Grid.RowDefinitions>
+        
+		<StackPanel>
+			<Image Source="/imgs/Home/home_header.png" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <TextBlock> 
+                "The only thing standing between you<LineBreak/>
+                and your goal is the bullshit story you<LineBreak/>
+                keep telling yourserf as to why you<LineBreak/>
+                can't achieve it". - Jordan Belfort
+            </TextBlock>
+		</StackPanel>
+        
+		<GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
+			ResizeBehavior="PreviousAndNext"/>
+
+		<ContentControl Grid.Row="2" x:Name="ContentNavigator" Content="{Binding MenuNavigator}"
+			HorizontalContentAlignment="Stretch" 
+			VerticalContentAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+		<GridSplitter Grid.Column="1" Grid.RowSpan="3" Width="5" ResizeDirection="Columns" ToolTip="Drag left-right to resize" 
+			VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext"  />
+
+		<!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.RowSpan="3">
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+        </StackPanel>-->
+
+		<Grid Grid.RowSpan="3" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+            
+            <Grid Grid.ColumnSpan="2" Background="#FFE8E8E8" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Right" Grid.Column="1" Margin="5,0" BorderThickness="0"  >
+                    <Image Source="/imgs/Home/home_page_settings.png" Stretch="None"/>
+                </Button>
+                <Button HorizontalAlignment="Right" Margin="5,0" Grid.Column="2" BorderThickness="0"  >
+                    <Image Source="/imgs/Home/home_page_refresh.png" Stretch="None"/>
+                </Button>
+            </Grid>
+            
+            <Image Source="/imgs/Home/home.png" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"/>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="1">
+    
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!--first column-->
+                    <Grid Margin="5">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+						</Grid.RowDefinitions>
+
+                        <Grid x:Name="TradingAccounts" Margin="0,0,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--header-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                
+                                <TextBlock Text="TRADING" VerticalAlignment="Bottom" Foreground="#FF5D3F5B" FontSize="18.667" Margin="0,0,0,-10"/>
+                                <TextBlock Text="ACCOUNTS" Grid.Row="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="21.333" Foreground="#FF260746"/>
+                                
+                                <Image Source="/imgs/Home/home_trading_accounts.png"
+                                       Grid.RowSpan="2" Grid.Column="1"/>
+                                
+                            </Grid>
+							<Separator Height="5" Grid.Row="1" Margin="0,7"/>
+                    
+                        </Grid>
+                    
+                    
+                        <Grid x:Name="TradingJournals" Grid.Row="1">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--header-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="TRADING" VerticalAlignment="Bottom" Foreground="#FF5D3F5B" FontSize="18.667" Margin="0,0,0,-10"/>
+                                <TextBlock Text="JOURNALS" Grid.Row="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="21.333" Foreground="#FF260746"/>
+
+                                <Image Source="/imgs/Home/home_trading_journals.png"
+                                       Grid.RowSpan="2" Grid.Column="1"/>
+
+                            </Grid>
+							<Separator Height="5" Grid.Row="1" Margin="0,7" />
+
+                        </Grid>
+
+                    </Grid>
+                    
+                    
+                    <Grid Grid.Column="1" Margin="5">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="auto"/>
+							<RowDefinition Height="auto"/>
+						</Grid.RowDefinitions>
+
+                        <Grid x:Name="TradingReports" Margin="0,0,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <!--header-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="TRADING" VerticalAlignment="Bottom" Foreground="#FF5D3F5B" FontSize="18.667" Margin="0,0,0,-10"/>
+                                <TextBlock Text="REPORTS" Grid.Row="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="21.333" Foreground="#FF260746"/>
+
+                                <Image Source="/imgs/Home/home_trading_reports.png"
+                                       Grid.RowSpan="2" Grid.Column="1"/>
+
+                            </Grid>
+							<Separator Height="5" Grid.Row="1" Margin="0,7" />
+
+                        </Grid>
+
+                        <Grid x:Name="Tasks" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <!--header-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="LATEST" VerticalAlignment="Bottom" Foreground="#FF5D3F5B" FontSize="18.667" Margin="0,0,0,-10"/>
+                                    <TextBlock Text="ADDED TASKS" Grid.Row="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="21.333" Foreground="#FF260746"/>
+
+                                    <Image Source="/imgs/Home/home_trading_tasks.png"
+                                       Grid.RowSpan="2" Grid.Column="1"/>									
+                                </Grid>
+								<Separator Height="5" Grid.Row="1" Margin="0,7" />
+                        </Grid>
+                    </Grid>
+
+                    <Grid x:Name="Contacts" Grid.Column="2" Margin="5" Grid.RowSpan="2">                              
+                        <Grid.RowDefinitions>                                    
+                            <RowDefinition Height="auto"/>                                   
+                            <RowDefinition Height="auto"/>                                    
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                                
+                        <!--header-->
+                                
+                        <Grid>                                    
+                            <Grid.ColumnDefinitions>                                       
+                                <ColumnDefinition Width="*"/>                                        
+                                <ColumnDefinition Width="auto"/>                                    
+                            </Grid.ColumnDefinitions>                                    
+                            <Grid.RowDefinitions>                                        
+                                <RowDefinition/>                                        
+                                <RowDefinition/>                                    
+                            </Grid.RowDefinitions>
+                                    
+                            <TextBlock Text="LATEST" VerticalAlignment="Bottom" Foreground="#FF5D3F5B" FontSize="18.667" Margin="0,0,0,-10" />                                    
+                            <TextBlock Text="CONTACTS" Grid.Row="1" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="21.333" Foreground="#FF260746" />                                    
+                            <Image Source="/imgs/Home/home_trading_contacts.png"
+                                       Grid.RowSpan="2" Grid.Column="1"/>
+                                
+                        </Grid>
+                        
+                        <Separator Height="5" Grid.Row="1" Margin="0,7" />
+                        
+                    </Grid>
+                </Grid>
+                
+                
+            </ScrollViewer>
+        </Grid>
+		
+	</Grid>
+</UserControl>
