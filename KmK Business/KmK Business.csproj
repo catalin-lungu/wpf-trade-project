@@ -103,6 +103,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MenuNavigatorViewModel.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="ViewModel\TradingJournalViewModel.cs" />
     <Compile Include="ViewModel\TradingPlanViewModel.cs" />
     <Page Include="CreateDB.xaml">
       <SubType>Designer</SubType>

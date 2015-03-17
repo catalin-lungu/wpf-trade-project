@@ -57,4 +57,25 @@
 
     <system:String x:Key="testTradingPlans">TEST TRADING PLANS</system:String>
     <system:String x:Key="validatedTradingPlan">VALIDATED TRADING PLANS</system:String>
+
+    <system:String x:Key="whatKingOfPerson">What kind of person I am? </system:String>
+    <system:String x:Key="myStrength">My Strength are... </system:String>
+    <system:String x:Key="myWeaknesses">My Weaknesses are... </system:String>
+    <system:String x:Key="doIWantToBeATrader">Do I want to be a trader, if so why? </system:String>
+    <system:String x:Key="canICommitEnoughTime">Can I commit enough time?</system:String>
+    <system:String x:Key="doIHaveFinancial">Do I have financial means?</system:String>
+    <system:String x:Key="canIhandlePressure">Can I handle pressure?</system:String>
+    <system:String x:Key="doIGiveUpEasily">Do I give up easily kind of person I am?</system:String>
+    <system:String x:Key="doIHaveEnoughWillpower">Do I have enough willpower to do all this?</system:String>
+
+    <system:String x:Key="yes">Yes</system:String>
+    <system:String x:Key="no">No</system:String>
+
+    <system:String x:Key="whatIsMyTradingGoal">What is my trading goal?</system:String>
+    <system:String x:Key="additionalNotesAndComments">Additional Notes and Comments</system:String>
+
+    <system:String x:Key="riskManagement">Risk Management</system:String>
+    <system:String x:Key="tradeCategories">Trade Categories</system:String>
+    <system:String x:Key="tradingTechniques">Trading Techniques</system:String>
+    
 </ResourceDictionary>

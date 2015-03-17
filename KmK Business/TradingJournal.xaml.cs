@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KmK_Business.ViewModel;
 
 namespace KmK_Business
 {
@@ -20,9 +21,12 @@ namespace KmK_Business
     /// </summary>
     public partial class TradingJournal : UserControl
     {
+        TradingJournalViewModel vm;
         public TradingJournal()
         {
             InitializeComponent();
+            vm = new TradingJournalViewModel();
+            this.DataContext = vm;
         }
     }
 }
