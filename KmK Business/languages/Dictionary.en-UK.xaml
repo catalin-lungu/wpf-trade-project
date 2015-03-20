@@ -58,6 +58,16 @@
     <system:String x:Key="testTradingPlans">TEST TRADING PLANS</system:String>
     <system:String x:Key="validatedTradingPlan">VALIDATED TRADING PLANS</system:String>
 
+    <system:String x:Key="tradingPlanPerformanceToDate">Trading plan performance to date</system:String>
+    <system:String x:Key="choseImage">Chose Image</system:String>
+    <system:String x:Key="useDefaultImage">Use default image above</system:String>
+    <system:String x:Key="useCustomImage">Use custom image</system:String>
+    <system:String x:Key="myFirstName">My First Name</system:String>
+    <system:String x:Key="lastName">Last Name</system:String>
+    <system:String x:Key="tradingPlanType">Trading Plan Type</system:String>
+    <system:String x:Key="tradingPlanName">Trading Plan Name</system:String>
+    <system:String x:Key="tradingPlanLongDesc">Trading plan long description</system:String>
+    
     <system:String x:Key="whatKingOfPerson">What kind of person I am? </system:String>
     <system:String x:Key="myStrength">My Strength are... </system:String>
     <system:String x:Key="myWeaknesses">My Weaknesses are... </system:String>
@@ -77,5 +87,151 @@
     <system:String x:Key="riskManagement">Risk Management</system:String>
     <system:String x:Key="tradeCategories">Trade Categories</system:String>
     <system:String x:Key="tradingTechniques">Trading Techniques</system:String>
+    <system:String x:Key="maxRiskAccount">Maximum % to Risk of Account Equity</system:String>
+    <system:String x:Key="minRiskRewardRatio">Minimum Risk: Reward Ratio to use</system:String>
+    <system:String x:Key="maxStopLoss">Maximum Stop-Loss in Pips</system:String>
+    <system:String x:Key="longTerm">Long term</system:String>
+    <system:String x:Key="swing">Swing</system:String>
+    <system:String x:Key="intraDay">Intra-day</system:String>
+    <system:String x:Key="scalp">Scalp</system:String>
+    <system:String x:Key="supplyDemand">Supply &amp; Demand</system:String>
+    <system:String x:Key="priceAnalysis">Price Analysis(PA)</system:String>
+    <system:String x:Key="breakouts">Breakouts</system:String>
+    <system:String x:Key="momentum">Momentum</system:String>
+    <system:String x:Key="divergence">Divergence</system:String>
+    <system:String x:Key="trend">Trend</system:String>
+    <system:String x:Key="oscillatorsOverbought">Oscillators Overbought/Sold</system:String>
+    <system:String x:Key="retracements">Retracements</system:String>
+    <system:String x:Key="candlePatterns">Candle Patterns</system:String>
+    <system:String x:Key="historicalSupRes">Historical Sup/Res Lines</system:String>
+    <system:String x:Key="maLines">MA Lines</system:String>
+    <system:String x:Key="dailyOpenLine">Daily Open Line</system:String>
+    <system:String x:Key="reversals">Reversals</system:String>
+    <system:String x:Key="chartPatterns">Chart Patterns</system:String>
+    <system:String x:Key="roundNumbers">Round Numbers</system:String>
+
+    <system:String x:Key="entryRule">Entry Rule</system:String>
+    <system:String x:Key="tradeManagementRule">Trade Management Rule</system:String>
+    <system:String x:Key="exitRule">Exit Rule</system:String>
+    <system:String x:Key="additionalRules">Additional Rules</system:String>
+    <!--<system:String x:Key="additionalNotesAndComments">Additional Notes and Comments</system:String>-->
+
+    <!--Trading journal-->
+    <system:String x:Key="liveAccounts">LIVE ACCOUNTS</system:String>
+    <system:String x:Key="demoAccounts">DEMO ACCOUNTS</system:String>
+
+    <system:String x:Key="brokerName">Broker Name</system:String>
+    <system:String x:Key="accountName">Account Name</system:String>
+    <system:String x:Key="accountNum">Account Num</system:String>
+    <system:String x:Key="accType">Acc. Type</system:String>
+    <system:String x:Key="accStatus">Acc. Status</system:String>
+
+    <!--<system:String x:Key="journal">Journal</system:String>-->
+    <system:String x:Key="summary">Summary</system:String>
+    <system:String x:Key="totals">Totals:</system:String>
+    <system:String x:Key="totalTrades">Total Trades:</system:String>
+    <system:String x:Key="netPL">Net P/L $</system:String>
+    <system:String x:Key="changes">Changes $</system:String>
+    <system:String x:Key="gross">Gross P/L $</system:String>
+    <system:String x:Key="wonPips">Won Pips</system:String>
+    <system:String x:Key="lostPips">Lost Pips</system:String>
+
+    <system:String x:Key="addNewTrade">Add New Trade</system:String>
+    <!--<system:String x:Key="edit">Edit</system:String>-->
+    <system:String x:Key="delete">Delete</system:String>
+    <system:String x:Key="save">Save</system:String>
+    <system:String x:Key="cancel">Cancel</system:String>
+    <system:String x:Key="screenCapture">Screen Capture</system:String>
+
+    <system:String x:Key="chartSnapshots">Chart Snapshots</system:String>
+    <system:String x:Key="notes">Notes</system:String>
+    <system:String x:Key="accountTransactions">Account Transactions</system:String>
+
+    <system:String x:Key="entry">ENTRY</system:String>
+    <system:String x:Key="orderNum">Order Num.</system:String>
+    <system:String x:Key="instrument">Instrument</system:String>
+    <system:String x:Key="entryType">Entry Type</system:String>
+    <system:String x:Key="category">Category</system:String>
+    <system:String x:Key="lotSize">Lot Size</system:String>
+    <system:String x:Key="entryPrice">Entry Price</system:String>
+    <system:String x:Key="entryDate">Entry Date</system:String>
+    <system:String x:Key="entryTime">Entry Time</system:String>
+
+    <system:String x:Key="targetRisk">TARGET &amp; RISK</system:String>
+    <system:String x:Key="tpPrice">T/P Price</system:String>
+    <system:String x:Key="targetPips">Target Pips</system:String>
+    <system:String x:Key="target">Target $</system:String>
+    <system:String x:Key="slPips">S/L Pips</system:String>
+    <system:String x:Key="sl">S/L $</system:String>
+    <system:String x:Key="riskRewRatio">Risk:Rew. Ratio</system:String>
+
+    <system:String x:Key="exit">EXIT</system:String>
+    <system:String x:Key="exitPrice">Exit Price</system:String>
+    <system:String x:Key="realizedRR">Realized R:R</system:String>
+    <system:String x:Key="exitDate">Exit Date</system:String>
+    <system:String x:Key="exitTime">Exit Time</system:String>
+
+    <system:String x:Key="outcome">OUTCOME</system:String>
+    <!--<system:String x:Key="netPL">Net P/L</system:String>-->
+    <system:String x:Key="commission">Commission</system:String>
+    <system:String x:Key="swap">Swap</system:String>
+    <system:String x:Key="grossPL">Gross P/L</system:String>
+    <!--<system:String x:Key="wonPips">Won Pips</system:String>-->
+    <!--<system:String x:Key="lostPips">Lost Pips</system:String>-->
+    <system:String x:Key="runBalance">Run. Balance$</system:String>
+
+    <system:String x:Key="additionalInfo">ADDITIONAL INFO</system:String>
+    <system:String x:Key="tradingTF">Trading TF</system:String>
+    <system:String x:Key="entryTF">Entry TF</system:String>
+    <system:String x:Key="tradeDuration">Trade Duration</system:String>
+    <system:String x:Key="hours">Hours</system:String>
+    <system:String x:Key="minutes">Minutes</system:String>
+
+    <system:String x:Key="entryReason">ENTRY REASON</system:String>
+    <system:String x:Key="shortDescription">Short Description</system:String>
+    <system:String x:Key="longDescription">Long Description</system:String>
+
+    <system:String x:Key="exitReason">EXIT REASON</system:String>
+    <system:String x:Key="strategyUsed">STRATEGY USED</system:String>
+
+    <system:String x:Key="tradeCounts">TRADE COUNTS</system:String>
+    <system:String x:Key="won">Won</system:String>
+    <system:String x:Key="lost">Lost</system:String>
+    <system:String x:Key="buys">Buys</system:String>
+    <system:String x:Key="sells">Sells</system:String>
+    <system:String x:Key="scapls">Scalps</system:String>
+    <system:String x:Key="swings">Swings</system:String>
+
+    <system:String x:Key="drawDown">DRAW-DOWN</system:String>
+    <system:String x:Key="maxDrawDown">Max. Draw-down</system:String>
+    <system:String x:Key="maxDrawDownPercent">Max. Draw-down %</system:String>
+
+    <system:String x:Key="balance">BALANCE</system:String>
+    <system:String x:Key="startingBalance">Starting Balance</system:String>
+    <system:String x:Key="currentBalance">Current Balance</system:String>
+    <system:String x:Key="plusMinus">+ -</system:String>
+
+    <system:String x:Key="riskLeverage">RISK &amp; LEVERAGE</system:String>
+    <system:String x:Key="leverageUsed">Leverage Used</system:String>
+    <system:String x:Key="averageRiskUsed">Average Risk % Used</system:String>
+    <system:String x:Key="allocatedRisk">Allocated Risk %</system:String>
+
+    <system:String x:Key="winLostRatio">WIN / LOSS RATIO</system:String>
+    <system:String x:Key="totalTradesCount">Total Trades Count</system:String>
+    <system:String x:Key="winCount">Win Count</system:String>
+    <system:String x:Key="lossCount">Loss Count</system:String>
+    <system:String x:Key="winPercent">Win %</system:String>
+    <system:String x:Key="lossPercent">Loss %</system:String>
+    <system:String x:Key="winLossRatio">Win/Loss Ratio</system:String>
+
+    <system:String x:Key="winLossTotals">WIN / LOSS TOTALS</system:String>
+    <!--<system:String x:Key="wonPips">Won Pips</system:String>-->
+    <!--<system:String x:Key="lostPips">Lost Pips</system:String>-->
+    <system:String x:Key="wlPipsBalance">W/L Pips Balance</system:String>
+    <system:String x:Key="wonDolar">Won $</system:String>
+    <system:String x:Key="lostDolar">Lost $</system:String>
+    <system:String x:Key="tradingCostDolar">Trading Cost $</system:String>
+    <system:String x:Key="wlBalance">W/L Balance</system:String>
+    
     
 </ResourceDictionary>

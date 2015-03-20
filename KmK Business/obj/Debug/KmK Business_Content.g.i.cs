@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/tradingplan/trading_plan.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ckeditor.js")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpage1.html")]
 
 

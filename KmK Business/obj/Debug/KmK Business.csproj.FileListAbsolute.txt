@@ -1,40 +1,51 @@
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\HTMLPage1.html
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.exe.config
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.exe
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.pdb
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\Adastra.RichEditorLibrary.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\EntityFramework.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\SQLite.Designer.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\System.Data.SQLite.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\System.Data.SQLite.EF6.dll
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\RibbonControlsLibrary.dll
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\WPFControlsLibrary.dll
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\XAMLConverter.exe
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\WPFControlsLibraryInterface.dll
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\Adastra.RichEditorLibrary.pdb
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\EntityFramework.xml
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\SQLite.Designer.pdb
 C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\System.Data.SQLite.xml
+C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\XAMLConverter.pdb
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.csprojResolveAssemblyReference.cache
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\CreateDB.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\HomeStart.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\languages\Dictionary.en-UK.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MainWindow.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Page1.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Style\ControlsStyle.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingJournal.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\App.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\CreateDB.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Home.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\HomeStart.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MainWindow.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MenuNavigator.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Page1.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingJournal.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingPlan.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\App.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business_Content.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business_MarkupCompile.cache
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business_MarkupCompile.lref
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Home.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\HomeStart.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MainWindow.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MenuNavigator.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingPlan.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.g.resources
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK_Business.Properties.Resources.resources
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.csproj.GenerateResource.Cache
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.exe
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.pdb
-C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.exe.config
-C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.exe
-C:\Users\lci\Desktop\KmK Business\KmK Business\bin\Debug\KmK Business.pdb
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Home.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\Home.g.cs
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business_MarkupCompile.lref
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingPlan.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingPlan.g.cs
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MenuNavigator.g.cs
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\MenuNavigator.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingJournal.baml
-C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\TradingJournal.g.cs

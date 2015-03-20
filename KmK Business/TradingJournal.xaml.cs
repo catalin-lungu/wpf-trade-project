@@ -28,5 +28,22 @@ namespace KmK_Business
             vm = new TradingJournalViewModel();
             this.DataContext = vm;
         }
+        
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is Model.Account)
+            {
+                vm.SelectedAccount = e.NewValue as Model.Account;
+                vm.AccountsItemTestVisibility = true;
+            }
+            else if (e.NewValue is Model.Accounts)
+            {
+                vm.SelectedAccounts = e.NewValue as Model.Accounts;
+                vm.AccountMainTestVisibility = true;
+            }
+        }
     }
+
+
 }

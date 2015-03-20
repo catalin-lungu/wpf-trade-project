@@ -130,6 +130,7 @@ namespace KmK_Business.ViewModel
 
         private void TradingJournal()
         {
+            App.CurrentWindow = new TradingJournal();
         }
 
         private void TradingTools()

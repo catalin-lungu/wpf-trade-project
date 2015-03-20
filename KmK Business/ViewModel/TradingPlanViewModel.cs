@@ -23,7 +23,6 @@ namespace KmK_Business.ViewModel
         }
 
         private string topStatusNavigator;
-
         public string TopStatusNavigator
         {
             get { return topStatusNavigator; }
@@ -57,7 +56,7 @@ namespace KmK_Business.ViewModel
             {
                 if (value)
                 {
-                    TradingPlanMainTestVisibility = true;
+                    TradingPlanMainTestVisibility = false;
                 }
                 tradingPlanItemTestVisibility = value;
                 RaisePropertyChangedEvent("TradingPlanItemTestVisibility");
@@ -100,6 +99,13 @@ namespace KmK_Business.ViewModel
             }
         }
 
+        private string test = "Heloo...";
+        public string Test 
+        {
+            get { return test; }
+            set { test = value; }
+        }
+
         public TradingPlanViewModel()
         {
             MenuNavigator = new MenuNavigator();
@@ -131,6 +137,6 @@ namespace KmK_Business.ViewModel
 
         }
 
-
+        
     }
 }

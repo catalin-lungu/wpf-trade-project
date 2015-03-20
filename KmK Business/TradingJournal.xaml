@@ -3,9 +3,788 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="clr-namespace:KmK_Business.Convertor"
+             xmlns:self="clr-namespace:KmK_Business.Model"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <l:BoolToVisibilityConverter x:Key="converter" />
+    </UserControl.Resources>
+    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+
+        <!--tree navigator-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="navi"/>
+
+            <Label Grid.Row="1" Content="xl"/>
+
+            <TreeView Grid.Row="2" ItemsSource="{Binding TreeSource}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type self:Accounts}" ItemsSource="{Binding AccountsList}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type self:Account}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+
+            <Calendar  Grid.Row="3" SelectedDate="{Binding SelectedDate}"
+                       SelectionMode="{Binding SelectedItem, ElementName=selectionmode}" DisplayMode="Month"
+                       VerticalAlignment="Bottom" VerticalContentAlignment="Bottom">
+                
+            </Calendar>
             
+        </Grid>
+
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
+			ResizeBehavior="PreviousAndNext">
+            <GridSplitter.Template>
+                <ControlTemplate TargetType="{x:Type GridSplitter}">
+                    <Grid>
+                        <Button Content="...." />
+                        <Rectangle Fill="#00FFFFFF" />
+                    </Grid>
+                </ControlTemplate>
+            </GridSplitter.Template>
+        </GridSplitter>
+        
+        <!--Navigator-->
+        <ContentControl Grid.Row="2" x:Name="ContentNavigator" Content="{Binding MenuNavigator}"
+			HorizontalContentAlignment="Stretch" 
+			VerticalContentAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+        <GridSplitter Grid.Column="1" Grid.RowSpan="3" Width="5" ResizeDirection="Columns" ToolTip="Drag left-right to resize" 
+			VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext"  >
+            <GridSplitter.Template>
+                <ControlTemplate TargetType="{x:Type GridSplitter}">
+                    <Grid>
+                        <Button Content="⁞" />
+                        <Rectangle Fill="#00FFFFFF" />
+                    </Grid>
+                </ControlTemplate>
+            </GridSplitter.Template>
+        </GridSplitter>
+
+        <!--Live-->
+        <Grid Grid.RowSpan="3" Grid.Column="2" Visibility="{Binding AccountMainTestVisibility, Converter={StaticResource converter}}">
+            <Label Content="LIVE account" Grid.Row="1"
+				/>
+        </Grid>
+
+        <!--Accounts-->
+        <Grid Grid.RowSpan="3" Grid.Column="2" Visibility="{Binding AccountsItemTestVisibility, Converter={StaticResource converter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+                <!--<RowDefinition MaxHeight="25" Height="25"/>-->
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Background="#FFE8E8E8" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/imgs/TradingJournal/trading_journal.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"/>
+                <Label Content="{Binding TopStatusNavigator}" Grid.Column="1"/>
+                
+                <Button Content="{DynamicResource brokerName}" Grid.Column="2"/>
+                <GridSplitter Grid.Column="3" />
+
+                <Button Content="{DynamicResource accountName}" Grid.Column="4"/>
+                <GridSplitter Grid.Column="5" />
+                <Button Content="{DynamicResource accountNum}" Grid.Column="6"/>
+                <GridSplitter Grid.Column="7" />
+                <Button Content="{DynamicResource accType}" Grid.Column="8"/>
+                <GridSplitter Grid.Column="9" />
+                <Button Content="{DynamicResource accStatus}" Grid.Column="10"/>
+
+                <Button Grid.Column="11">
+                    <StackPanel>
+                        <Image Source="/imgs/TradingJournal/accounts.png" />
+                     </StackPanel>
+                </Button>
+                <Button Grid.Column="12">
+                    <StackPanel>
+                        <Image Source="/imgs/TradingJournal/screen_cap.png" />
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="13">
+                    <StackPanel>
+                        <Image Source="/imgs/TradingJournal/tranaction_history.png" />
+                    </StackPanel>
+                </Button>
+                
+                <!--....-->
+
+                <Button Grid.Column="15" Content="{DynamicResource journal}"
+                        Command="{Binding JournalCommand}"/>
+                <Button Grid.Column="16" Content="{DynamicResource summary}"
+                        Command="{Binding SummaryCommand}"/>
+                        
+            </Grid>           
+            
+            <!--journal-->
+            <Grid Grid.Row="1" Visibility="{Binding JournalVisibility, Converter={StaticResource converter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <DataGrid>
+
+                </DataGrid>
+
+                <Grid Background="#FFE8E8E8" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="{DynamicResource totals}" />
+
+                    <Label Content="{DynamicResource totalTrades}" Grid.Column="2"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="3"/>
+
+                    <Label Content="{DynamicResource netPL}" Grid.Column="6"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="7"/>
+
+                    <Label Content="{DynamicResource changes}" Grid.Column="8"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="9"/>
+
+                    <Label Content="{DynamicResource gross}" Grid.Column="10"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="11"/>
+
+                    <Label Content="{DynamicResource wonPips}" Grid.Column="12"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="13"/>
+
+                    <Label Content="{DynamicResource lostPips}" Grid.Column="14"
+                       HorizontalAlignment="Right"/>
+                    <TextBox Grid.Column="15"/>
+
+                </Grid>
+
+            </Grid>
+            
+            <!--summary-->
+            <Grid Grid.Row="1" Visibility="{Binding SummaryVisibility, Converter={StaticResource converter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Header="{DynamicResource tradeCounts}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Label Grid.Column="2" Content="{DynamicResource won}"/>
+                            <Label Grid.Column="3" Content="{DynamicResource lost}"/>
+
+                            <Label Grid.Row="2" Content="{DynamicResource buys}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" />
+                            <TextBox Grid.Row="2" Grid.Column="2" />
+                            <TextBox Grid.Row="2" Grid.Column="3" />
+
+                            <Label Grid.Row="3" Content="{DynamicResource sells}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" />
+                            <TextBox Grid.Row="3" Grid.Column="2" />
+                            <TextBox Grid.Row="3" Grid.Column="3" />
+
+
+                            <Label Grid.Row="4" Content="{DynamicResource scapls}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" />
+                            <TextBox Grid.Row="4" Grid.Column="2" />
+                            <TextBox Grid.Row="4" Grid.Column="3" />
+
+
+                            <Label Grid.Row="5" Content="{DynamicResource swings}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" />
+                            <TextBox Grid.Row="5" Grid.Column="2" />
+                            <TextBox Grid.Row="5" Grid.Column="3" />
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Header="{DynamicResource drawDown}" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="{DynamicResource maxDrawDown}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="1" />
+                            
+                            <Label Grid.Row="1" Content="{DynamicResource maxDrawDownPercent}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" />
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Header="{DynamicResource balance}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="{DynamicResource startingBalance}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="1" />
+
+                            <Label Grid.Row="1" Content="{DynamicResource currentBalance}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" />
+
+                            <Label Grid.Row="2" Content="{DynamicResource plusMinus}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" />
+                        </Grid>
+                    </GroupBox>
+
+
+                    <GroupBox Header="{DynamicResource riskLeverage}" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="{DynamicResource leverageUsed}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Column="1" />
+
+                            <Label Grid.Row="1" Content="{DynamicResource averageRiskUsed}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" />
+
+                            <Label Grid.Row="2" Content="{DynamicResource allocatedRisk}" HorizontalAlignment="Right"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+                <GroupBox Header="{DynamicResource winLostRatio}" Grid.Column="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="{DynamicResource totalTradesCount}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Column="1" />
+
+                        <Label Grid.Row="1" Content="{DynamicResource winCount}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" />
+
+                        <Label Grid.Row="2" Content="{DynamicResource lossCount}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" />
+
+                        <Label Grid.Row="3" Content="{DynamicResource winPercent}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" />
+
+                        <Label Grid.Row="4" Content="{DynamicResource lossPercent}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" />
+
+                        <Label Grid.Row="5" Content="{DynamicResource winLossRatio}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" />
+                    </Grid>
+                </GroupBox>
+            
+                <GroupBox Header="{DynamicResource winLossTotals}" Grid.Column="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="{DynamicResource wonPips}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Column="1" />
+
+                        <Label Grid.Row="1" Content="{DynamicResource lostPips}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" />
+
+                        <Label Grid.Row="2" Content="{DynamicResource wlPipsBalance}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" />
+
+                        <Label Grid.Row="3" Content="{DynamicResource wonDolar}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" />
+
+                        <Label Grid.Row="4" Content="{DynamicResource lostDolar}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" />
+
+                        <Label Grid.Row="5" Content="{DynamicResource tradingCostDolar}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" />
+
+                        <Label Grid.Row="6" Content="{DynamicResource wlBalance}" HorizontalAlignment="Right"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" />
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+            
+            <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
+			              ShowsPreview="True" >                
+                <GridSplitter.Template>
+                    <ControlTemplate TargetType="{x:Type GridSplitter}">
+                        <Grid>
+                            <Button Content="...." />
+                            <Rectangle Fill="#00FFFFFF" />
+                        </Grid>
+                    </ControlTemplate>
+                </GridSplitter.Template>
+            </GridSplitter>
+
+            <!--journal-->
+            <TabControl Grid.Row="3" TabStripPlacement="Left" SelectedIndex="0"
+                        Visibility="{Binding JournalVisibility, Converter={StaticResource converter}}">
+                <TabItem Header="{DynamicResource details}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <GroupBox Header="{DynamicResource entry}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>                                
+                                
+                                <Label Content="{DynamicResource orderNum}"/>
+                                <TextBox Grid.Column="1"/>
+                                
+                                <Label Grid.Row="1" Content="{DynamicResource instrument}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Grid.Row="2" Content="{DynamicResource entryType}"/>
+                                <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Grid.Row="3" Content="{DynamicResource category}"/>
+                                <TextBox Grid.Row="3" Grid.Column="1"/>
+
+                                <Label Grid.Row="4" Content="{DynamicResource lotSize}"/>
+                                <TextBox Grid.Row="4" Grid.Column="1"/>
+
+                                <Label Grid.Row="5" Content="{DynamicResource entryPrice}"/>
+                                <TextBox Grid.Row="5" Grid.Column="1"/>
+
+                                <Label Grid.Row="6" Content="{DynamicResource entryDate}"/>
+                                <TextBox Grid.Row="6" Grid.Column="1"/>
+
+                                <Label Grid.Row="7" Content="{DynamicResource entryTime}"/>
+                                <TextBox Grid.Row="7" Grid.Column="1"/>
+                                
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="{DynamicResource targetRisk}" Grid.Column="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{DynamicResource tpPrice}"/>
+                                <TextBox Grid.Column="1"/>
+
+                                <Label Grid.Row="1" Content="{DynamicResource targetPips}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Grid.Row="2" Content="{DynamicResource target}"/>
+                                <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Grid.Row="3" Content="{DynamicResource slPips}"/>
+                                <TextBox Grid.Row="3" Grid.Column="1"/>
+
+                                <Label Grid.Row="4" Content="{DynamicResource sl}"/>
+                                <TextBox Grid.Row="4" Grid.Column="1"/>
+
+                                <Label Grid.Row="5" Content="{DynamicResource riskRewRatio}"/>
+                                <TextBox Grid.Row="5" Grid.Column="1"/>
+                                
+                            </Grid>
+                        </GroupBox>
+                        
+                        <GroupBox Header="{DynamicResource exit}" Grid.Column="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                            
+
+                                <Label Content="{DynamicResource exitPrice}"/>
+                                <TextBox Grid.Column="1"/>
+
+                                <Label Grid.Row="1" Content="{DynamicResource realizedRR}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Grid.Row="2" Content="{DynamicResource exitDate}"/>
+                                <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Grid.Row="3" Content="{DynamicResource exitTime}"/>
+                                <TextBox Grid.Row="3" Grid.Column="1"/>
+                                
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="{DynamicResource outcome}" Grid.Column="3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{DynamicResource netPL}"/>
+                                <TextBox  Grid.Column="1"/>
+
+                                <Label Grid.Row="1" Content="{DynamicResource commission}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                <Label Grid.Row="2" Content="{DynamicResource swap}"/>
+                                <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                                <Label Grid.Row="3" Content="{DynamicResource grossPL}"/>
+                                <TextBox Grid.Row="3" Grid.Column="1"/>
+
+                                <Label Grid.Row="4" Content="{DynamicResource wonPips}"/>
+                                <TextBox Grid.Row="4" Grid.Column="1"/>
+
+                                <Label Grid.Row="5" Content="{DynamicResource lostPips}"/>
+                                <TextBox Grid.Row="5" Grid.Column="1"/>
+
+                                <Label Grid.Row="6" Content="{DynamicResource runBalance}"/>
+                                <TextBox Grid.Row="6" Grid.Column="1"/>
+                                
+                            </Grid>
+                        </GroupBox>
+                        
+                        <GroupBox Header="{DynamicResource additionalInfo}" Grid.Column="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{DynamicResource tradingTF}"/>
+                                <TextBox Grid.Column="1"/>
+
+                                <Label Grid.Row="1" Content="{DynamicResource entryTF}"/>
+                                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                <GroupBox Header="{DynamicResource tradeDuration}" Grid.Row="2" Grid.ColumnSpan="2">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Content="{DynamicResource hours}"/>
+                                        <TextBox Grid.Column="1"/>
+
+                                        <Label Grid.Row="1" Content="{DynamicResource minutes}"/>
+                                        <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>                            
+                            
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource strategy}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <GroupBox Header="{DynamicResource entryReason}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Label Content="{DynamicResource shortDescription}"/>
+
+                                <TextBox Grid.Row="1"/>
+                                <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
+
+                                <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
+								         TextWrapping="Wrap" AcceptsReturn="True"/>
+                                
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="{DynamicResource exitReason}" Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{DynamicResource shortDescription}"/>
+
+                                <TextBox Grid.Row="1"/>
+                                <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
+
+                                <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
+								         TextWrapping="Wrap" AcceptsReturn="True"/>
+
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Header="{DynamicResource strategyUsed}" Grid.Column="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{DynamicResource shortDescription}"/>
+
+                                <TextBox Grid.Row="1"/>
+                                <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
+
+                                <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
+								         TextWrapping="Wrap" AcceptsReturn="True"/>
+
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="{DynamicResource chartSnapshots}">
+
+                </TabItem>
+                <TabItem Header="{DynamicResource notes}">
+                    RTF Editor
+                </TabItem>
+                <TabItem Header="{DynamicResource accountTransactions}">
+
+                </TabItem>
+            </TabControl>
+            
+            <!--summary-->
+            <Grid Grid.Row="3" Visibility="{Binding SummaryVisibility, Converter={StaticResource converter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <Image Source="/imgs/TradingJournal/equity_curve.png"/>
+                    
+                    
+                </StackPanel>
+                
+                <Label Grid.Row="1" Content="GRafic"/>
+
+                <Label Grid.Row="1" Grid.Column="1" Content="Chart"/>
+                
+                
+            </Grid>
+
+            <!--Buttons last row-->
+            <Grid Grid.Row="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Content="{DynamicResource addNewTrade}"/>
+
+                <Button Content="{DynamicResource edit}" Grid.Column="1"/>
+                
+                <Button Content="{DynamicResource delete}" Grid.Column="2"/>
+                
+                <Button Content="{DynamicResource save}" Grid.Column="3"/>
+
+                <Button Content="{DynamicResource cancel}" Grid.Column="4"/>
+
+                <Button Content="{DynamicResource screenCapture}" Grid.Column="6"/>
+            </Grid>
+            
+        </Grid>
+
+        
+
     </Grid>
 </UserControl>
