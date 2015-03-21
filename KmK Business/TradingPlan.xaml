@@ -125,9 +125,17 @@
                 <Label Content="{Binding TopStatusNavigator}" Grid.Row="1"/>
             </Grid>
 
-
-            <Label Content="test" Grid.Row="1"
-				Visibility="{Binding TradingPlanMainTestVisibility, Converter={StaticResource converter}}"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding PlanControls}" Background="White" Margin="5,10,5,10" 
+                              Visibility="{Binding TradingPlanMainTestVisibility, Converter={StaticResource converter}}"
+                              >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Margin="5"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
 
             <TabControl Grid.Row="1" Visibility="{Binding TradingPlanItemTestVisibility, Converter={StaticResource converter}}">
 				<TabControl.Resources>

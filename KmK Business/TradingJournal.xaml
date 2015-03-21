@@ -150,8 +150,17 @@
 
         <!--Live-->
         <Grid Grid.RowSpan="3" Grid.Column="2" Visibility="{Binding AccountMainTestVisibility, Converter={StaticResource converter}}">
-            <Label Content="LIVE account" Grid.Row="1"
-				/>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding AccountControls}" Background="White" Margin="5,10,5,10" 
+                              Visibility="{Binding TradingPlanMainTestVisibility, Converter={StaticResource converter}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Margin="5"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
 
         <!--Accounts-->

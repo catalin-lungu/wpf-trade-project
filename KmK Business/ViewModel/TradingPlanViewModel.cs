@@ -95,7 +95,13 @@ namespace KmK_Business.ViewModel
             set 
             { 
                 selectedTradingPlan = value;
-                RaisePropertyChangedEvent("SelectedTradingPlan");
+                PlanControls.Clear();
+                foreach (var plan in selectedTradingPlan.Plans)
+                {
+                    PlanControls.Add(new PlanGroupBoxControl(plan));
+                }
+                RaisePropertyChangedEvent("PlanControls");
+                RaisePropertyChangedEvent("SelectedTradingPlan");                
             }
         }
 
@@ -105,6 +111,14 @@ namespace KmK_Business.ViewModel
             get { return test; }
             set { test = value; }
         }
+
+        private ObservableCollection<PlanGroupBoxControl> planControls = new ObservableCollection<PlanGroupBoxControl>();
+        public ObservableCollection<PlanGroupBoxControl> PlanControls
+        {
+            get { return planControls; }
+            set { planControls = value; }
+        }
+        
 
         public TradingPlanViewModel()
         {

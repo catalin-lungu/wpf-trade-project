@@ -84,6 +84,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AccountGroupBoxControl.xaml.cs">
+      <DependentUpon>AccountGroupBoxControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convertor\BoolToVisibilityConverter.cs" />
     <Compile Include="Convertor\ToUpperCaseConverter.cs" />
     <Compile Include="CreateDB.xaml.cs">
@@ -108,20 +111,29 @@
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlanGroupBoxControl.xaml.cs">
+      <DependentUpon>PlanGroupBoxControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TradingJournal.xaml.cs">
       <DependentUpon>TradingJournal.xaml</DependentUpon>
     </Compile>
     <Compile Include="TradingPlan.xaml.cs">
       <DependentUpon>TradingPlan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AccountGroupBoxControlViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\HomeStartViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MenuNavigatorViewModel.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="ViewModel\PlanGroupBoxControlViewModel.cs" />
     <Compile Include="ViewModel\TradingJournalViewModel.cs" />
     <Compile Include="ViewModel\TradingPlanViewModel.cs" />
+    <Page Include="AccountGroupBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateDB.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanGroupBoxControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Fonts\" />
+    <Folder Include="imgs\AccountGroupBoxControl\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="imgs\app_title_bar.png" />

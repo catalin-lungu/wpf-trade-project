@@ -206,7 +206,8 @@
     <system:String x:Key="maxDrawDown">Max. Draw-down</system:String>
     <system:String x:Key="maxDrawDownPercent">Max. Draw-down %</system:String>
 
-    <system:String x:Key="balance">BALANCE</system:String>
+    <system:String x:Key="balanceUPCase">BALANCE</system:String>
+    <system:String x:Key="balance">Balance</system:String>
     <system:String x:Key="startingBalance">Starting Balance</system:String>
     <system:String x:Key="currentBalance">Current Balance</system:String>
     <system:String x:Key="plusMinus">+ -</system:String>
@@ -232,6 +233,34 @@
     <system:String x:Key="lostDolar">Lost $</system:String>
     <system:String x:Key="tradingCostDolar">Trading Cost $</system:String>
     <system:String x:Key="wlBalance">W/L Balance</system:String>
-    
+
+    <system:String x:Key="winsAndLosses">WINS &amp; LOSSES</system:String>
+    <system:String x:Key="accountBalance">ACCOUNT BALANCE</system:String>
+    <system:String x:Key="returnsPercent">RETURNS %</system:String>
+    <system:String x:Key="historyAndPFactor">HISTORY &amp;&#13; P. FACTOR</system:String>
+
+    <system:String x:Key="count">Count</system:String>
+    <system:String x:Key="pips">Pips</system:String>
+    <system:String x:Key="amountsDolar">Amounts $</system:String>
+
+    <system:String x:Key="wins">Wins</system:String>
+    <system:String x:Key="losses">Losses</system:String>
+    <!--<system:String x:Key="balance">Balance</system:String>-->
+
+    <system:String x:Key="depositsDolar">Deposits $</system:String>
+    <system:String x:Key="withdrawalsDolar">Withdrawals $</system:String>
+    <system:String x:Key="netDolar">Net $</system:String>
+    <system:String x:Key="accBalanceDolar">Acc. Balance $</system:String>
+
+    <system:String x:Key="daily">Daily</system:String>
+    <system:String x:Key="weekly">Weekly</system:String>
+    <system:String x:Key="monthly">Monthly</system:String>
+    <system:String x:Key="yearly">Yearly</system:String>
+
+    <system:String x:Key="history">History</system:String>
+    <system:String x:Key="days">Days</system:String>
+    <system:String x:Key="profitFactor">Profit Factor</system:String>
+
+    <system:String x:Key="performanceToDate">performance to date</system:String>
     
 </ResourceDictionary>

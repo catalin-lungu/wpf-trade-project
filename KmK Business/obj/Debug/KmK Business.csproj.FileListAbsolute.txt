@@ -49,3 +49,7 @@ C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK_Business.Properties
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.csproj.GenerateResource.Cache
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.exe
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK Business.pdb
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\AccountGroupBoxControl.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\PlanGroupBoxControl.baml
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\AccountGroupBoxControl.g.cs
+C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\PlanGroupBoxControl.g.cs
