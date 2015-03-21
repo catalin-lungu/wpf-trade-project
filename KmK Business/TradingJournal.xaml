@@ -6,11 +6,70 @@
              xmlns:l="clr-namespace:KmK_Business.Convertor"
              xmlns:self="clr-namespace:KmK_Business.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="700" d:DesignWidth="1200" >
     <UserControl.Resources>
         <l:BoolToVisibilityConverter x:Key="converter" />
-    </UserControl.Resources>
-    
+
+        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+        <Style x:Key="GroupBoxStyleCenter" TargetType="{x:Type GroupBox}">
+        	<Setter Property="BorderBrush" Value="#D5DFE5"/>
+        	<Setter Property="BorderThickness" Value="1"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type GroupBox}">
+        				<Grid SnapsToDevicePixels="true">
+        					<Grid.ColumnDefinitions>
+        						<ColumnDefinition Width="6"/>
+        						<ColumnDefinition Width="Auto"/>
+        						<ColumnDefinition Width="*"/>
+        						<ColumnDefinition Width="6"/>
+        					</Grid.ColumnDefinitions>
+        					<Grid.RowDefinitions>
+        						<RowDefinition Height="Auto"/>
+        						<RowDefinition Height="Auto"/>
+        						<RowDefinition Height="*"/>
+        						<RowDefinition Height="6"/>
+        					</Grid.RowDefinitions>
+        					<Border BorderBrush="#FFD5DFE5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="4" Grid.Column="0" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"/>
+        					
+							<Border BorderBrush="White" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="4" CornerRadius="4" Grid.Row="1" Grid.RowSpan="3"
+									>
+        						<Border.OpacityMask>
+        							<MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
+        								<Binding ElementName="Header" Path="ActualWidth"/>
+        								<Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+        								<Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+        							</MultiBinding>
+        						</Border.OpacityMask>
+        						<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+        							<Border BorderBrush="White" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"/>
+        						</Border>
+        					</Border>
+        					<Border x:Name="Header" Grid.Column="2" HorizontalAlignment="Center" Padding="15,2,15,2" Grid.Row="0" Grid.RowSpan="2"
+									Background="#FF4B4B4B" >
+        						<ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+												TextBlock.Foreground="White" /> 
+								
+        					</Border>
+        					<ContentPresenter Grid.ColumnSpan="2" Grid.Column="1" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+        				</Grid>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>    
+    <!--
+		<Style TargetType="GroupBox">
+			<Setter Property="BorderBrush" Value="#f5f5f5"/>
+			<Setter Property="HeaderTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<TextBlock Text="{Binding}" FontWeight="Bold" HorizontalAlignment="Center"/>
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		-->
+	</UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -96,7 +155,8 @@
         </Grid>
 
         <!--Accounts-->
-        <Grid Grid.RowSpan="3" Grid.Column="2" Visibility="{Binding AccountsItemTestVisibility, Converter={StaticResource converter}}">
+        <Grid Grid.RowSpan="3" Grid.Column="2" 
+			  Visibility="{Binding AccountsItemTestVisibility, Converter={StaticResource converter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="1*"/>
@@ -106,7 +166,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Grid Background="#FFE8E8E8" >
+            <Grid Background="#FFEDEDED" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
@@ -127,31 +187,39 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/imgs/TradingJournal/trading_journal.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None"/>
-                <Label Content="{Binding TopStatusNavigator}" Grid.Column="1"/>
+                <Image Source="/imgs/TradingJournal/trading_journal.png" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="None" Margin="0,0,5,0"/>
+                <Label Content="{Binding TopStatusNavigator}" Grid.Column="1" Margin="0,0,5,0"/>
                 
-                <Button Content="{DynamicResource brokerName}" Grid.Column="2"/>
-                <GridSplitter Grid.Column="3" />
+                <Button Content="{DynamicResource brokerName}" Grid.Column="2"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0"/>
+                <GridSplitter Grid.Column="3" Margin="0,0,5,0" Width="1" Background="#FFA6A6A6" VerticalAlignment="Center" Height="15"/>
 
-                <Button Content="{DynamicResource accountName}" Grid.Column="4"/>
-                <GridSplitter Grid.Column="5" />
-                <Button Content="{DynamicResource accountNum}" Grid.Column="6"/>
-                <GridSplitter Grid.Column="7" />
-                <Button Content="{DynamicResource accType}" Grid.Column="8"/>
-                <GridSplitter Grid.Column="9" />
-                <Button Content="{DynamicResource accStatus}" Grid.Column="10"/>
+                <Button Content="{DynamicResource accountName}" Grid.Column="4"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0"/>
+                <GridSplitter Grid.Column="5" Margin="0,0,5,0" Width="1" Background="#FFA6A6A6" VerticalAlignment="Center" Height="15"/>
+                <Button Content="{DynamicResource accountNum}" Grid.Column="6"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0"/>
+                <GridSplitter Grid.Column="7" Margin="0,0,5,0" Width="1" Background="#FFA6A6A6" VerticalAlignment="Center" Height="15"/>
+                <Button Content="{DynamicResource accType}" Grid.Column="8"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0"/>
+                <GridSplitter Grid.Column="9" Margin="0,0,5,0" Width="1" Background="#FFA6A6A6" VerticalAlignment="Center" Height="15"/>
+                <Button Content="{DynamicResource accStatus}" Grid.Column="10"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0"/>
 
-                <Button Grid.Column="11">
+                <Button Grid.Column="11"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0">
                     <StackPanel>
                         <Image Source="/imgs/TradingJournal/accounts.png" />
                      </StackPanel>
                 </Button>
-                <Button Grid.Column="12">
+                <Button Grid.Column="12"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0">
                     <StackPanel>
                         <Image Source="/imgs/TradingJournal/screen_cap.png" />
                     </StackPanel>
                 </Button>
-                <Button Grid.Column="13">
+                <Button Grid.Column="13"
+						BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0,0,5,0">
                     <StackPanel>
                         <Image Source="/imgs/TradingJournal/tranaction_history.png" />
                     </StackPanel>
@@ -159,10 +227,10 @@
                 
                 <!--....-->
 
-                <Button Grid.Column="15" Content="{DynamicResource journal}"
-                        Command="{Binding JournalCommand}"/>
-                <Button Grid.Column="16" Content="{DynamicResource summary}"
-                        Command="{Binding SummaryCommand}"/>
+                <Button Grid.Column="15" Content="{DynamicResource journal}" MinWidth="80"
+                        Command="{Binding JournalCommand}" Margin="0,2,5,2"/>
+                <Button Grid.Column="16" Content="{DynamicResource summary}" MinWidth="80"
+                        Command="{Binding SummaryCommand}" Margin="0,2,15,2"/>
                         
             </Grid>           
             
@@ -177,58 +245,58 @@
 
                 </DataGrid>
 
-                <Grid Background="#FFE8E8E8" Grid.Row="1">
+                <Grid Background="#FFE8E8E8" Grid.Row="1" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="{DynamicResource totals}" />
+                    <Label Content="{DynamicResource totals}" Height="25" />
 
-                    <Label Content="{DynamicResource totalTrades}" Grid.Column="2"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="3"/>
+                    <Label Content="{DynamicResource totalTrades}" Grid.Column="2" 
+                       HorizontalAlignment="Right" Height="25"/>
+                    <TextBox Grid.Column="3" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource netPL}" Grid.Column="6"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="7"/>
+                       HorizontalAlignment="Right" Height="25"/>
+                    <TextBox Grid.Column="7" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource changes}" Grid.Column="8"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="9"/>
+                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="9" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource gross}" Grid.Column="10"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="11"/>
+                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="11" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource wonPips}" Grid.Column="12"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="13"/>
+                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="13" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource lostPips}" Grid.Column="14"
-                       HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="15"/>
+                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="15" Height="25" Margin="0,2,5,2"/>
 
                 </Grid>
 
             </Grid>
             
             <!--summary-->
-            <Grid Grid.Row="1" Visibility="{Binding SummaryVisibility, Converter={StaticResource converter}}">
+            <Grid Grid.Row="1" Visibility="{Binding SummaryVisibility, Converter={StaticResource converter}}" MinHeight="285">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -236,13 +304,13 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 
-                <Grid>
+                <Grid Margin="5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <GroupBox Header="{DynamicResource tradeCounts}">
+                    <GroupBox Header="{DynamicResource tradeCounts}" Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -258,34 +326,34 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             
-                            <Label Grid.Column="2" Content="{DynamicResource won}"/>
-                            <Label Grid.Column="3" Content="{DynamicResource lost}"/>
+                            <Label Grid.Column="2" Content="{DynamicResource won}" Height="25"/>
+                            <Label Grid.Column="3" Content="{DynamicResource lost}" Height="25"/>
 
-                            <Label Grid.Row="2" Content="{DynamicResource buys}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" />
-                            <TextBox Grid.Row="2" Grid.Column="2" />
-                            <TextBox Grid.Row="2" Grid.Column="3" />
+                            <Label Grid.Row="2" Content="{DynamicResource buys}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="2" Grid.Column="2" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="2" Grid.Column="3" Height="25" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="3" Content="{DynamicResource sells}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" />
-                            <TextBox Grid.Row="3" Grid.Column="2" />
-                            <TextBox Grid.Row="3" Grid.Column="3" />
-
-
-                            <Label Grid.Row="4" Content="{DynamicResource scapls}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" />
-                            <TextBox Grid.Row="4" Grid.Column="2" />
-                            <TextBox Grid.Row="4" Grid.Column="3" />
+                            <Label Grid.Row="3" Content="{DynamicResource sells}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="3" Grid.Column="2" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="3" Grid.Column="3" Height="25" Margin="0,3,5,3" />
 
 
-                            <Label Grid.Row="5" Content="{DynamicResource swings}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="5" Grid.Column="1" />
-                            <TextBox Grid.Row="5" Grid.Column="2" />
-                            <TextBox Grid.Row="5" Grid.Column="3" />
+                            <Label Grid.Row="4" Content="{DynamicResource scapls}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="4" Grid.Column="2" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="4" Grid.Column="3" Height="25" Margin="0,3,5,3" />
+
+
+                            <Label Grid.Row="5" Content="{DynamicResource swings}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="5" Grid.Column="2" Height="25" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="5" Grid.Column="3" Height="25" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="{DynamicResource drawDown}" Grid.Row="1">
+                    <GroupBox Header="{DynamicResource drawDown}" Grid.Row="1" Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -296,23 +364,23 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="{DynamicResource maxDrawDown}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Column="1" />
+                            <Label Content="{DynamicResource maxDrawDown}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Column="1" Height="25" BorderThickness="1,3,5,3" Margin="0,5,5,3" />
                             
-                            <Label Grid.Row="1" Content="{DynamicResource maxDrawDownPercent}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" />
+                            <Label Grid.Row="1" Content="{DynamicResource maxDrawDownPercent}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" BorderThickness="1,3,5,3" Margin="0,3,5,3" />
 
                         </Grid>
                     </GroupBox>
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Margin="5,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <GroupBox Header="{DynamicResource balance}">
+                    <GroupBox Header="{DynamicResource balance}" Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -324,19 +392,19 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="{DynamicResource startingBalance}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Column="1" />
+                            <Label Content="{DynamicResource startingBalance}" HorizontalAlignment="Right" Height="26" Margin="0,5,0,3"/>
+                            <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3" />
 
-                            <Label Grid.Row="1" Content="{DynamicResource currentBalance}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" />
+                            <Label Grid.Row="1" Content="{DynamicResource currentBalance}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="2" Content="{DynamicResource plusMinus}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" />
+                            <Label Grid.Row="2" Content="{DynamicResource plusMinus}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
 
 
-                    <GroupBox Header="{DynamicResource riskLeverage}" Grid.Row="1">
+                    <GroupBox Header="{DynamicResource riskLeverage}" Grid.Row="1" Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -348,92 +416,101 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="{DynamicResource leverageUsed}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Column="1" />
+                            <Label Content="{DynamicResource leverageUsed}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3" />
 
-                            <Label Grid.Row="1" Content="{DynamicResource averageRiskUsed}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" />
+                            <Label Grid.Row="1" Content="{DynamicResource averageRiskUsed}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="2" Content="{DynamicResource allocatedRisk}" HorizontalAlignment="Right"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" />
+                            <Label Grid.Row="2" Content="{DynamicResource allocatedRisk}" HorizontalAlignment="Right" Height="25"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
                 </Grid>
 
-                <GroupBox Header="{DynamicResource winLostRatio}" Grid.Column="2">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+				<Grid Grid.Column="2" Margin="5,0">					
+					<Grid.RowDefinitions>
+						<RowDefinition Height="auto"/>
+					</Grid.RowDefinitions>
+					<GroupBox Header="{DynamicResource winLostRatio}"  Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*"/>
+								<ColumnDefinition Width="1*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+							</Grid.RowDefinitions>
 
-                        <Label Content="{DynamicResource totalTradesCount}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Column="1" />
+							<Label Content="{DynamicResource totalTradesCount}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Column="1" Margin="0,5,5,3" />
 
-                        <Label Grid.Row="1" Content="{DynamicResource winCount}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" />
+							<Label Grid.Row="1" Content="{DynamicResource winCount}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="2" Content="{DynamicResource lossCount}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" />
+							<Label Grid.Row="2" Content="{DynamicResource lossCount}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="3" Content="{DynamicResource winPercent}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" />
+							<Label Grid.Row="3" Content="{DynamicResource winPercent}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="4" Content="{DynamicResource lossPercent}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" />
+							<Label Grid.Row="4" Content="{DynamicResource lossPercent}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="5" Content="{DynamicResource winLossRatio}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" />
-                    </Grid>
-                </GroupBox>
-            
-                <GroupBox Header="{DynamicResource winLossTotals}" Grid.Column="3">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+							<Label Grid.Row="5" Content="{DynamicResource winLossRatio}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" />
+						</Grid>
+					</GroupBox>
+				</Grid>
 
-                        <Label Content="{DynamicResource wonPips}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Column="1" />
+				<Grid Grid.Column="3" Margin="5,0">					
+					<Grid.RowDefinitions>
+						<RowDefinition Height="auto"/>
+					</Grid.RowDefinitions>
+					<GroupBox Header="{DynamicResource winLossTotals}" Grid.Column="3" Style="{DynamicResource GroupBoxStyleCenter}" Margin="0,10,0,0" >
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="1*"/>
+								<ColumnDefinition Width="1*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
+							</Grid.RowDefinitions>
 
-                        <Label Grid.Row="1" Content="{DynamicResource lostPips}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" />
+							<Label Content="{DynamicResource wonPips}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Column="1" Margin="0,5,5,3" />
 
-                        <Label Grid.Row="2" Content="{DynamicResource wlPipsBalance}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" />
+							<Label Grid.Row="1" Content="{DynamicResource lostPips}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="3" Content="{DynamicResource wonDolar}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" />
+							<Label Grid.Row="2" Content="{DynamicResource wlPipsBalance}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="4" Content="{DynamicResource lostDolar}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" />
+							<Label Grid.Row="3" Content="{DynamicResource wonDolar}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="5" Content="{DynamicResource tradingCostDolar}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" />
+							<Label Grid.Row="4" Content="{DynamicResource lostDolar}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" />
 
-                        <Label Grid.Row="6" Content="{DynamicResource wlBalance}" HorizontalAlignment="Right"/>
-                        <TextBox Grid.Row="6" Grid.Column="1" />
-                    </Grid>
-                </GroupBox>
+							<Label Grid.Row="5" Content="{DynamicResource tradingCostDolar}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" />
 
+							<Label Grid.Row="6" Content="{DynamicResource wlBalance}" HorizontalAlignment="Right"/>
+							<TextBox Grid.Row="6" Grid.Column="1" Margin="0,3,5,3" />
+						</Grid>
+					</GroupBox>
+				</Grid>
             </Grid>
             
             <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
@@ -449,9 +526,34 @@
             </GridSplitter>
 
             <!--journal-->
-            <TabControl Grid.Row="3" TabStripPlacement="Left" SelectedIndex="0"
+            <TabControl Grid.Row="3" TabStripPlacement="Left" SelectedIndex="0" MinHeight="350"
                         Visibility="{Binding JournalVisibility, Converter={StaticResource converter}}">
-                <TabItem Header="{DynamicResource details}" >
+				<TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="#FFFFE6B4" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="White" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+                <TabItem Header="{DynamicResource details}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -461,7 +563,8 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <GroupBox Header="{DynamicResource entry}">
+                        <GroupBox Header="{DynamicResource entry}" Style="{DynamicResource GroupBoxStyleCenter}" >						
+							
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -478,34 +581,35 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>                                
                                 
-                                <Label Content="{DynamicResource orderNum}"/>
-                                <TextBox Grid.Column="1"/>
+                                <Label Content="{DynamicResource orderNum}" Height="25" Margin="0,5,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
                                 
-                                <Label Grid.Row="1" Content="{DynamicResource instrument}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1"/>
+                                <Label Grid.Row="1" Content="{DynamicResource instrument}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource entryType}"/>
-                                <TextBox Grid.Row="2" Grid.Column="1"/>
+                                <Label Grid.Row="2" Content="{DynamicResource entryType}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource category}"/>
-                                <TextBox Grid.Row="3" Grid.Column="1"/>
+                                <Label Grid.Row="3" Content="{DynamicResource category}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource lotSize}"/>
-                                <TextBox Grid.Row="4" Grid.Column="1"/>
+                                <Label Grid.Row="4" Content="{DynamicResource lotSize}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource entryPrice}"/>
-                                <TextBox Grid.Row="5" Grid.Column="1"/>
+                                <Label Grid.Row="5" Content="{DynamicResource entryPrice}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="6" Content="{DynamicResource entryDate}"/>
-                                <TextBox Grid.Row="6" Grid.Column="1"/>
+                                <Label Grid.Row="6" Content="{DynamicResource entryDate}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="6" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="7" Content="{DynamicResource entryTime}"/>
-                                <TextBox Grid.Row="7" Grid.Column="1"/>
+                                <Label Grid.Row="7" Content="{DynamicResource entryTime}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="7" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
                                 
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource targetRisk}" Grid.Column="1">
+                        <GroupBox Header="{DynamicResource targetRisk}" Style="{DynamicResource GroupBoxStyleCenter}"
+								  Grid.Column="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -520,28 +624,28 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource tpPrice}"/>
-                                <TextBox Grid.Column="1"/>
+                                <Label Content="{DynamicResource tpPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="25"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource targetPips}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1"/>
+                                <Label Grid.Row="1" Content="{DynamicResource targetPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource target}"/>
-                                <TextBox Grid.Row="2" Grid.Column="1"/>
+                                <Label Grid.Row="2" Content="{DynamicResource target}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource slPips}"/>
-                                <TextBox Grid.Row="3" Grid.Column="1"/>
+                                <Label Grid.Row="3" Content="{DynamicResource slPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource sl}"/>
-                                <TextBox Grid.Row="4" Grid.Column="1"/>
+                                <Label Grid.Row="4" Content="{DynamicResource sl}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource riskRewRatio}"/>
-                                <TextBox Grid.Row="5" Grid.Column="1"/>
+                                <Label Grid.Row="5" Content="{DynamicResource riskRewRatio}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
                                 
                             </Grid>
                         </GroupBox>
                         
-                        <GroupBox Header="{DynamicResource exit}" Grid.Column="2">
+                        <GroupBox Header="{DynamicResource exit}" Style="{DynamicResource GroupBoxStyleCenter}" Grid.Column="2">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -555,22 +659,22 @@
                                 </Grid.RowDefinitions>
                             
 
-                                <Label Content="{DynamicResource exitPrice}"/>
-                                <TextBox Grid.Column="1"/>
+                                <Label Content="{DynamicResource exitPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="25"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource realizedRR}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1"/>
+                                <Label Grid.Row="1" Content="{DynamicResource realizedRR}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource exitDate}"/>
-                                <TextBox Grid.Row="2" Grid.Column="1"/>
+                                <Label Grid.Row="2" Content="{DynamicResource exitDate}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource exitTime}"/>
-                                <TextBox Grid.Row="3" Grid.Column="1"/>
+                                <Label Grid.Row="3" Content="{DynamicResource exitTime}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
                                 
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource outcome}" Grid.Column="3">
+                        <GroupBox Header="{DynamicResource outcome}" Style="{DynamicResource GroupBoxStyleCenter}" Grid.Column="3">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -586,31 +690,31 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource netPL}"/>
-                                <TextBox  Grid.Column="1"/>
+                                <Label Content="{DynamicResource netPL}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                <TextBox  Grid.Column="1" Height="25" Margin="0,5,5,3"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource commission}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1"/>
+                                <Label Grid.Row="1" Content="{DynamicResource commission}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource swap}"/>
-                                <TextBox Grid.Row="2" Grid.Column="1"/>
+                                <Label Grid.Row="2" Content="{DynamicResource swap}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource grossPL}"/>
-                                <TextBox Grid.Row="3" Grid.Column="1"/>
+                                <Label Grid.Row="3" Content="{DynamicResource grossPL}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource wonPips}"/>
-                                <TextBox Grid.Row="4" Grid.Column="1"/>
+                                <Label Grid.Row="4" Content="{DynamicResource wonPips}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource lostPips}"/>
-                                <TextBox Grid.Row="5" Grid.Column="1"/>
+                                <Label Grid.Row="5" Content="{DynamicResource lostPips}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <Label Grid.Row="6" Content="{DynamicResource runBalance}"/>
-                                <TextBox Grid.Row="6" Grid.Column="1"/>
+                                <Label Grid.Row="6" Content="{DynamicResource runBalance}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="6" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
                                 
                             </Grid>
                         </GroupBox>
                         
-                        <GroupBox Header="{DynamicResource additionalInfo}" Grid.Column="4">
+                        <GroupBox Header="{DynamicResource additionalInfo}" Style="{DynamicResource GroupBoxStyleCenter}" Grid.Column="4">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
@@ -622,13 +726,13 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource tradingTF}"/>
-                                <TextBox Grid.Column="1"/>
+                                <Label Content="{DynamicResource tradingTF}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource entryTF}"/>
-                                <TextBox Grid.Row="1" Grid.Column="1"/>
+                                <Label Grid.Row="1" Content="{DynamicResource entryTF}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
-                                <GroupBox Header="{DynamicResource tradeDuration}" Grid.Row="2" Grid.ColumnSpan="2">
+                                <GroupBox Header="{DynamicResource tradeDuration}" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
@@ -639,11 +743,11 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <Label Content="{DynamicResource hours}"/>
-                                        <TextBox Grid.Column="1"/>
+                                        <Label Content="{DynamicResource hours}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                        <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
 
-                                        <Label Grid.Row="1" Content="{DynamicResource minutes}"/>
-                                        <TextBox Grid.Row="1" Grid.Column="1"/>
+                                        <Label Grid.Row="1" Content="{DynamicResource minutes}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
 
                                     </Grid>
                                 </GroupBox>
@@ -660,7 +764,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <GroupBox Header="{DynamicResource entryReason}">
+                        <GroupBox Header="{DynamicResource entryReason}" Style="{DynamicResource GroupBoxStyleCenter}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -680,7 +784,7 @@
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource exitReason}" Grid.Column="1">
+                        <GroupBox Header="{DynamicResource exitReason}" Grid.Column="1" Style="{DynamicResource GroupBoxStyleCenter}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -700,7 +804,7 @@
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource strategyUsed}" Grid.Column="2">
+                        <GroupBox Header="{DynamicResource strategyUsed}" Grid.Column="2" Style="{DynamicResource GroupBoxStyleCenter}">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
