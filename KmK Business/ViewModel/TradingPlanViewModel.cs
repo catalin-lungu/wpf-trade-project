@@ -63,8 +63,8 @@ namespace KmK_Business.ViewModel
             }
         }
 
-        private ObservableCollection<TradingPlans> treeSource = new ObservableCollection<TradingPlans>();
-        public ObservableCollection<TradingPlans> TreeSource
+        private ObservableCollection<TradingPlansModel> treeSource = new ObservableCollection<TradingPlansModel>();
+        public ObservableCollection<TradingPlansModel> TreeSource
         {
             get 
             {
@@ -88,8 +88,8 @@ namespace KmK_Business.ViewModel
             }
         }
 
-        private TradingPlans selectedTradingPlan;
-        public TradingPlans SelectedTradingPlan 
+        private TradingPlansModel selectedTradingPlan;
+        public TradingPlansModel SelectedTradingPlan 
         {
             get { return selectedTradingPlan; }
             set 
@@ -129,7 +129,7 @@ namespace KmK_Business.ViewModel
             plans.Add(new Plan() { Name = "test2", IsTest = true });
 
 
-            TradingPlans vtp = new TradingPlans((string)App.Current.TryFindResource("validatedTradingPlan"));
+            TradingPlansModel vtp = new TradingPlansModel((string)App.Current.TryFindResource("validatedTradingPlan"));
             foreach (var p in plans)
             {
                 if (!p.IsTest)
@@ -139,7 +139,7 @@ namespace KmK_Business.ViewModel
             }
             TreeSource.Add(vtp);
 
-            TradingPlans ttp = new TradingPlans((string)App.Current.TryFindResource("testTradingPlans"));
+            TradingPlansModel ttp = new TradingPlansModel((string)App.Current.TryFindResource("testTradingPlans"));
             foreach (var tp in plans)
             {
                 if (tp.IsTest)

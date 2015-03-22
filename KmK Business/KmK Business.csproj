@@ -106,7 +106,8 @@
     <Compile Include="Model\AdminDB.cs" />
     <Compile Include="Model\KmKContext.cs" />
     <Compile Include="Model\Plan.cs" />
-    <Compile Include="Model\TradingPlans.cs" />
+    <Compile Include="Model\TradingJournalModel.cs" />
+    <Compile Include="Model\TradingPlansModel.cs" />
     <Compile Include="ObjectForScriptingHelper.cs" />
     <Compile Include="Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>

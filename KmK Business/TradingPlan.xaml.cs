@@ -73,9 +73,9 @@ namespace KmK_Business
                 vm.SelectedPlan = e.NewValue as Model.Plan;
                 vm.TradingPlanItemTestVisibility = true;
             }
-            else if (e.NewValue is Model.TradingPlans)
+            else if (e.NewValue is Model.TradingPlansModel)
             {
-                vm.SelectedTradingPlan = e.NewValue as Model.TradingPlans;
+                vm.SelectedTradingPlan = e.NewValue as Model.TradingPlansModel;
                 vm.TradingPlanMainTestVisibility = true;
             }
         }

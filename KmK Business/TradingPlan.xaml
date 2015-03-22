@@ -82,7 +82,7 @@
 
             <TreeView Grid.Row="2" ItemsSource="{Binding TreeSource}" SelectedItemChanged="TreeView_SelectedItemChanged">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type self:TradingPlans}" ItemsSource="{Binding Plans}">
+                    <HierarchicalDataTemplate DataType="{x:Type self:TradingPlansModel}" ItemsSource="{Binding Plans}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Name}" />
                         </StackPanel>

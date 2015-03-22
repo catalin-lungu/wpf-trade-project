@@ -262,5 +262,11 @@
     <system:String x:Key="profitFactor">Profit Factor</system:String>
 
     <system:String x:Key="performanceToDate">performance to date</system:String>
-    
+
+    <system:String x:Key="entryDateAndTime">Entry Date &amp; Time</system:String>
+    <system:String x:Key="num">Num</system:String>
+    <system:String x:Key="type">Type</system:String>
+    <system:String x:Key="ptPrice">P/T Price</system:String>
+    <system:String x:Key="rr">R:R</system:String>
+    <system:String x:Key="duration">Duration</system:String>
 </ResourceDictionary>

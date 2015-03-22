@@ -111,7 +111,7 @@
                 </TreeView.Resources>
             </TreeView>
 
-            <Calendar  Grid.Row="3" SelectedDate="{Binding SelectedDate}"
+            <Calendar  Grid.Row="3" SelectedDate="{Binding SelectedDate}" 
                        SelectionMode="{Binding SelectedItem, ElementName=selectionmode}" DisplayMode="Month"
                        VerticalAlignment="Bottom" VerticalContentAlignment="Bottom">
                 
@@ -250,8 +250,40 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <DataGrid>
-
+                <DataGrid x:Name="dataGrid" ItemsSource="{Binding TradingJournal}" CanUserAddRows="False" SelectionUnit="FullRow"
+                          AutoGenerateColumns="False" CanUserResizeColumns="True" SelectedItem="{Binding RowTradingJournal}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{DynamicResource num}" Binding="{Binding Num}"/>
+                        <DataGridTextColumn Header="{DynamicResource orderNum}" Binding="{Binding OrderNum}"/>
+                        <DataGridTextColumn Header="{DynamicResource instrument}" Binding="{Binding Instrument}"/>
+                        <DataGridTextColumn Header="{DynamicResource type}" Binding="{Binding Type}"/>
+                        <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding Category}"/>
+                        <DataGridTextColumn Header="{DynamicResource lotSize}" Binding="{Binding LotSize}"/>
+                        <DataGridTextColumn Header="{DynamicResource entryPrice}" Binding="{Binding EntryPrice}"/>
+                        <DataGridTextColumn Header="{DynamicResource entryDateAndTime}" Binding="{Binding EntryDate}"/>
+                        <DataGridTextColumn Header="{DynamicResource ptPrice}" Binding="{Binding TPPrice}"/>
+                        <DataGridTextColumn Header="{DynamicResource targetPips}" Binding="{Binding TargetPips}"/>
+                        <DataGridTextColumn Header="{DynamicResource target}" Binding="{Binding Target}"/>
+                        <DataGridTextColumn Header="{DynamicResource slPips}" Binding="{Binding SLPips}"/>
+                        <DataGridTextColumn Header="{DynamicResource sl}" Binding="{Binding SL}"/>
+                        <DataGridTextColumn Header="{DynamicResource rr}" Binding="{Binding RR}"/>
+                        <DataGridTextColumn Header="{DynamicResource exitPrice}" Binding="{Binding ExitPrice}"/>
+                        <DataGridTextColumn Header="{DynamicResource realizedRR}" Binding="{Binding RealizedRR}"/>
+                        <DataGridTextColumn Header="{DynamicResource exitDate}" Binding="{Binding ExitDate}"/>
+                        <DataGridTextColumn Header="{DynamicResource netPL}" Binding="{Binding NetPL}"/>
+                        <DataGridTextColumn Header="{DynamicResource commission}" Binding="{Binding Commission}"/>
+                        <DataGridTextColumn Header="{DynamicResource swap}" Binding="{Binding Swap}"/>
+                        <DataGridTextColumn Header="{DynamicResource grossPL}" Binding="{Binding GrossPL}"/>
+                        <DataGridTextColumn Header="{DynamicResource wonPips}" Binding="{Binding WonPips}"/>
+                        <DataGridTextColumn Header="{DynamicResource lostPips}" Binding="{Binding LostPips}"/>
+                        <DataGridTextColumn Header="{DynamicResource runBalance}" Binding="{Binding RunBalance}"/>
+                        <DataGridTextColumn Header="{DynamicResource tradingTF}" Binding="{Binding TradingTF}"/>
+                        <DataGridTextColumn Header="{DynamicResource entryTF}" Binding="{Binding EntryTF}"/>
+                        <DataGridTextColumn Header="{DynamicResource duration}" Binding="{Binding Duration}"/>
+                        <DataGridTextColumn Header="{DynamicResource entryReason}" Binding="{Binding EntryReason}"/>
+                        <DataGridTextColumn Header="{DynamicResource exitReason}" Binding="{Binding ExitReason}"/>
+                        <DataGridTextColumn Header="{DynamicResource strategyUsed}" Binding="{Binding StrategyUsed}"/>
+                    </DataGrid.Columns>
                 </DataGrid>
 
                 <Grid Background="#FFE8E8E8" Grid.Row="1" Margin="0">
@@ -274,30 +306,30 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Content="{DynamicResource totals}" Height="25" />
+                    <Label Content="{DynamicResource totals}" Height="26" />
 
                     <Label Content="{DynamicResource totalTrades}" Grid.Column="2" 
-                       HorizontalAlignment="Right" Height="25"/>
+                       HorizontalAlignment="Right" Height="26"/>
                     <TextBox Grid.Column="3" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource netPL}" Grid.Column="6"
-                       HorizontalAlignment="Right" Height="25"/>
+                       HorizontalAlignment="Right" Height="26"/>
                     <TextBox Grid.Column="7" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource changes}" Grid.Column="8"
-                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
                     <TextBox Grid.Column="9" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource gross}" Grid.Column="10"
-                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
                     <TextBox Grid.Column="11" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource wonPips}" Grid.Column="12"
-                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
                     <TextBox Grid.Column="13" Height="25" Margin="0,2"/>
 
                     <Label Content="{DynamicResource lostPips}" Grid.Column="14"
-                       HorizontalAlignment="Right" Height="25" Margin="10,0,0,0"/>
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
                     <TextBox Grid.Column="15" Height="25" Margin="0,2,5,2"/>
 
                 </Grid>
@@ -333,32 +365,33 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+								<RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             
-                            <Label Grid.Column="2" Content="{DynamicResource won}" Height="25"/>
-                            <Label Grid.Column="3" Content="{DynamicResource lost}" Height="25"/>
+                            <Label Grid.Column="2" Content="{DynamicResource won}" Height="26"/>
+                            <Label Grid.Column="3" Content="{DynamicResource lost}" Height="26"/>
 
-                            <Label Grid.Row="2" Content="{DynamicResource buys}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="2" Grid.Column="2" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="2" Grid.Column="3" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="2" Content="{DynamicResource buys}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="2" Grid.Column="2" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="2" Grid.Column="3" Height="26" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="3" Content="{DynamicResource sells}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="3" Grid.Column="2" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="3" Grid.Column="3" Height="25" Margin="0,3,5,3" />
-
-
-                            <Label Grid.Row="4" Content="{DynamicResource scapls}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="4" Grid.Column="2" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="4" Grid.Column="3" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="3" Content="{DynamicResource sells}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="3" Grid.Column="2" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="3" Grid.Column="3" Height="26" Margin="0,3,5,3" />
 
 
-                            <Label Grid.Row="5" Content="{DynamicResource swings}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="5" Grid.Column="2" Height="25" Margin="0,3,5,3" />
-                            <TextBox Grid.Row="5" Grid.Column="3" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="4" Content="{DynamicResource scapls}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="4" Grid.Column="2" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="4" Grid.Column="3" Height="26" Margin="0,3,5,3" />
+
+
+                            <Label Grid.Row="5" Content="{DynamicResource swings}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="5" Grid.Column="2" Height="26" Margin="0,3,5,3" />
+                            <TextBox Grid.Row="5" Grid.Column="3" Height="26" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
 
@@ -373,11 +406,11 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="{DynamicResource maxDrawDown}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Column="1" Height="25" BorderThickness="1,3,5,3" Margin="0,5,5,3" />
+                            <Label Content="{DynamicResource maxDrawDown}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Column="1" Height="26" BorderThickness="1,3,5,3" Margin="0,5,5,3" />
                             
-                            <Label Grid.Row="1" Content="{DynamicResource maxDrawDownPercent}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" BorderThickness="1,3,5,3" Margin="0,3,5,3" />
+                            <Label Grid.Row="1" Content="{DynamicResource maxDrawDownPercent}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="26" BorderThickness="1,3,5,3" Margin="0,3,5,3" />
 
                         </Grid>
                     </GroupBox>
@@ -402,13 +435,13 @@
                             </Grid.RowDefinitions>
 
                             <Label Content="{DynamicResource startingBalance}" HorizontalAlignment="Right" Height="26" Margin="0,5,0,3"/>
-                            <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3" />
+                            <TextBox Grid.Column="1" Height="26" Margin="0,5,5,3" />
 
-                            <Label Grid.Row="1" Content="{DynamicResource currentBalance}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="1" Content="{DynamicResource currentBalance}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="2" Content="{DynamicResource plusMinus}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="2" Content="{DynamicResource plusMinus}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="26" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
 
@@ -425,14 +458,14 @@
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <Label Content="{DynamicResource leverageUsed}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3" />
+                            <Label Content="{DynamicResource leverageUsed}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Column="1" Height="26" Margin="0,5,5,3" />
 
-                            <Label Grid.Row="1" Content="{DynamicResource averageRiskUsed}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="1" Content="{DynamicResource averageRiskUsed}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,3,5,3" />
 
-                            <Label Grid.Row="2" Content="{DynamicResource allocatedRisk}" HorizontalAlignment="Right" Height="25"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,3,5,3" />
+                            <Label Grid.Row="2" Content="{DynamicResource allocatedRisk}" HorizontalAlignment="Right" Height="26"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Height="26" Margin="0,3,5,3" />
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -456,23 +489,23 @@
 								<RowDefinition Height="auto"/>
 							</Grid.RowDefinitions>
 
-							<Label Content="{DynamicResource totalTradesCount}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Column="1" Margin="0,5,5,3" />
+							<Label Content="{DynamicResource totalTradesCount}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Column="1" Margin="0,5,5,3" Height="26" />
 
-							<Label Grid.Row="1" Content="{DynamicResource winCount}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="1" Content="{DynamicResource winCount}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="2" Content="{DynamicResource lossCount}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="2" Content="{DynamicResource lossCount}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="3" Content="{DynamicResource winPercent}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="3" Content="{DynamicResource winPercent}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="4" Content="{DynamicResource lossPercent}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="4" Content="{DynamicResource lossPercent}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="5" Content="{DynamicResource winLossRatio}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="5" Content="{DynamicResource winLossRatio}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 						</Grid>
 					</GroupBox>
 				</Grid>
@@ -497,26 +530,26 @@
 								<RowDefinition Height="auto"/>
 							</Grid.RowDefinitions>
 
-							<Label Content="{DynamicResource wonPips}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Column="1" Margin="0,5,5,3" />
+							<Label Content="{DynamicResource wonPips}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Column="1" Margin="0,5,5,3" Height="26" />
 
-							<Label Grid.Row="1" Content="{DynamicResource lostPips}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="1" Content="{DynamicResource lostPips}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="2" Content="{DynamicResource wlPipsBalance}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="2" Content="{DynamicResource wlPipsBalance}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="3" Content="{DynamicResource wonDolar}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="3" Content="{DynamicResource wonDolar}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="4" Content="{DynamicResource lostDolar}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="4" Content="{DynamicResource lostDolar}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="5" Content="{DynamicResource tradingCostDolar}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="5" Content="{DynamicResource tradingCostDolar}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 
-							<Label Grid.Row="6" Content="{DynamicResource wlBalance}" HorizontalAlignment="Right"/>
-							<TextBox Grid.Row="6" Grid.Column="1" Margin="0,3,5,3" />
+							<Label Grid.Row="6" Content="{DynamicResource wlBalance}" HorizontalAlignment="Right" Height="26"/>
+							<TextBox Grid.Row="6" Grid.Column="1" Margin="0,3,5,3" Height="26" />
 						</Grid>
 					</GroupBox>
 				</Grid>
@@ -590,29 +623,37 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>                                
                                 
-                                <Label Content="{DynamicResource orderNum}" Height="25" Margin="0,5,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
+                                <Label Content="{DynamicResource orderNum}" Height="26" Margin="0,5,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Column="1" Height="26" Margin="0,5,5,3"                                   
+                                         Text="{Binding SelectedItem.OrderNum, ElementName=dataGrid, Mode=TwoWay}"/>
                                 
-                                <Label Grid.Row="1" Content="{DynamicResource instrument}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="1" Content="{DynamicResource instrument}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.Instrument, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource entryType}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="2" Content="{DynamicResource entryType}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.Type, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource category}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="3" Content="{DynamicResource category}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.Category, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource lotSize}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="4" Content="{DynamicResource lotSize}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.LotSize, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource entryPrice}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="5" Content="{DynamicResource entryPrice}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.EntryPrice, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="6" Content="{DynamicResource entryDate}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="6" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="6" Content="{DynamicResource entryDate}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="6" Grid.Column="1" Height="26" Margin="0,1,5,3" 
+                                         Text="{Binding SelectedItem.EntryDate.Date, ElementName=dataGrid, StringFormat=d, Mode=OneWay}"/>
 
-                                <Label Grid.Row="7" Content="{DynamicResource entryTime}" Height="25" Margin="0,1,3,3" HorizontalAlignment="Right"/>
-                                <TextBox Grid.Row="7" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="7" Content="{DynamicResource entryTime}" Height="26" Margin="0,1,3,3" HorizontalAlignment="Right"/>
+                                <TextBox Grid.Row="7" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.EntryDate.TimeOfDay, ElementName=dataGrid, Mode=OneWay}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -633,23 +674,29 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource tpPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="25"/>
+                                <Label Content="{DynamicResource tpPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="26"
+                                         Text="{Binding SelectedItem.TPPrice, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource targetPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="1" Content="{DynamicResource targetPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.TargetPips, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource target}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="2" Content="{DynamicResource target}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.Target, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource slPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="3" Content="{DynamicResource slPips}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.SLPips, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource sl}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="4" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="4" Content="{DynamicResource sl}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.SL, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource riskRewRatio}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="5" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="5" Content="{DynamicResource riskRewRatio}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.RR, ElementName=dataGrid, Mode=TwoWay}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -668,17 +715,21 @@
                                 </Grid.RowDefinitions>
                             
 
-                                <Label Content="{DynamicResource exitPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="25"/>
+                                <Label Content="{DynamicResource exitPrice}" Margin="0,5,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Column="1" Margin="0,5,5,3" Height="26"
+                                         Text="{Binding SelectedItem.ExitPrice, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource realizedRR}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="1" Content="{DynamicResource realizedRR}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.RealizedRR, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource exitDate}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="2" Content="{DynamicResource exitDate}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.ExitDate.Date, ElementName=dataGrid, StringFormat=d, Mode=OneWay}"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource exitTime}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="25"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="25"/>
+                                <Label Grid.Row="3" Content="{DynamicResource exitTime}" Margin="0,1,3,3" HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,1,5,3" Height="26"
+                                         Text="{Binding SelectedItem.ExitDate.TimeOfDay, ElementName=dataGrid, Mode=OneWay}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -699,26 +750,33 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource netPL}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
-                                <TextBox  Grid.Column="1" Height="25" Margin="0,5,5,3"/>
+                                <Label Content="{DynamicResource netPL}" Height="26" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                <TextBox  Grid.Column="1" Height="26" Margin="0,5,5,3"
+                                          Text="{Binding SelectedItem.NetPL, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource commission}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="1" Content="{DynamicResource commission}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.Commission, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource swap}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="2" Content="{DynamicResource swap}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.Swap, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="3" Content="{DynamicResource grossPL}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="3" Content="{DynamicResource grossPL}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="3" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.GrossPL, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource wonPips}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="4" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="4" Content="{DynamicResource wonPips}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="4" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.WonPips, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="5" Content="{DynamicResource lostPips}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="5" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="5" Content="{DynamicResource lostPips}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="5" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.LostPips, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="6" Content="{DynamicResource runBalance}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="6" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="6" Content="{DynamicResource runBalance}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="6" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.RunBalance, ElementName=dataGrid, Mode=TwoWay}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -735,11 +793,13 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource tradingTF}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
-                                <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
+                                <Label Content="{DynamicResource tradingTF}" Height="26" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                <TextBox Grid.Column="1" Height="26" Margin="0,5,5,3"
+                                         Text="{Binding SelectedItem.TradingTF, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                <Label Grid.Row="1" Content="{DynamicResource entryTF}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                <Label Grid.Row="1" Content="{DynamicResource entryTF}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                         Text="{Binding SelectedItem.EntryTF, ElementName=dataGrid, Mode=TwoWay}"/>
 
                                 <GroupBox Header="{DynamicResource tradeDuration}" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0">
                                     <Grid>
@@ -752,11 +812,13 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <Label Content="{DynamicResource hours}" Height="25" HorizontalAlignment="Right" Margin="0,5,3,3"/>
-                                        <TextBox Grid.Column="1" Height="25" Margin="0,5,5,3"/>
+                                        <Label Content="{DynamicResource hours}" Height="26" HorizontalAlignment="Right" Margin="0,5,3,3"/>
+                                        <TextBox Grid.Column="1" Height="26" Margin="0,5,5,3"
+                                                 Text="{Binding SelectedItem.DurationHours, ElementName=dataGrid, Mode=TwoWay}"/>
 
-                                        <Label Grid.Row="1" Content="{DynamicResource minutes}" Height="25" HorizontalAlignment="Right" Margin="0,1,3,3"/>
-                                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="0,1,5,3"/>
+                                        <Label Grid.Row="1" Content="{DynamicResource minutes}" Height="26" HorizontalAlignment="Right" Margin="0,1,3,3"/>
+                                        <TextBox Grid.Row="1" Grid.Column="1" Height="26" Margin="0,1,5,3"
+                                                 Text="{Binding SelectedItem.DurationMinutes, ElementName=dataGrid, Mode=TwoWay}"/>
 
                                     </Grid>
                                 </GroupBox>
@@ -783,12 +845,14 @@
                                 </Grid.RowDefinitions>
                                 
                                 <Label Content="{DynamicResource shortDescription}"/>
-
-                                <TextBox Grid.Row="1"/>
+                                <TextBox Grid.Row="1"
+                                         Text="{Binding SelectedItem.EntryReason, ElementName=dataGrid, Mode=TwoWay}"/>
+                                
                                 <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
 
                                 <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
-								         TextWrapping="Wrap" AcceptsReturn="True"/>
+								         TextWrapping="Wrap" AcceptsReturn="True"
+                                         Text="{Binding SelectedItem.EntryReasonLong, ElementName=dataGrid, Mode=TwoWay}"/>
                                 
                             </Grid>
                         </GroupBox>
@@ -803,12 +867,14 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Content="{DynamicResource shortDescription}"/>
-
-                                <TextBox Grid.Row="1"/>
+                                <TextBox Grid.Row="1"
+                                         Text="{Binding SelectedItem.ExitReason, ElementName=dataGrid, Mode=TwoWay}"/>
+                                
                                 <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
 
                                 <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
-								         TextWrapping="Wrap" AcceptsReturn="True"/>
+								         TextWrapping="Wrap" AcceptsReturn="True"
+                                         Text="{Binding SelectedItem.ExitReasonLong, ElementName=dataGrid, Mode=TwoWay}"/>
 
                             </Grid>
                         </GroupBox>
@@ -823,12 +889,13 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Content="{DynamicResource shortDescription}"/>
-
-                                <TextBox Grid.Row="1"/>
+                                <TextBox Grid.Row="1"
+                                         Text="{Binding SelectedItem.StrategyUsed, ElementName=dataGrid, Mode=TwoWay}"/>                                
+                                
                                 <Label Content="{DynamicResource longDescription}" Grid.Row="2"/>
-
                                 <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="3"
-								         TextWrapping="Wrap" AcceptsReturn="True"/>
+								         TextWrapping="Wrap" AcceptsReturn="True"
+                                         Text="{Binding SelectedItem.StrategyUsedLong, ElementName=dataGrid, Mode=TwoWay}"/>
 
                             </Grid>
                         </GroupBox>
@@ -881,16 +948,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
-                <Button Content="{DynamicResource addNewTrade}"/>
 
-                <Button Content="{DynamicResource edit}" Grid.Column="1"/>
-                
-                <Button Content="{DynamicResource delete}" Grid.Column="2"/>
-                
-                <Button Content="{DynamicResource save}" Grid.Column="3"/>
+                <Button Content="{DynamicResource addNewTrade}" Command="{Binding AddNewTradeCommand}"/>
 
-                <Button Content="{DynamicResource cancel}" Grid.Column="4"/>
+                <Button Content="{DynamicResource edit}" Grid.Column="1" IsEnabled="False"/>
+
+                <Button Content="{DynamicResource delete}" Grid.Column="2" Command="{Binding DeleteTradeCommand}"/>
+
+                <Button Content="{DynamicResource save}" Grid.Column="3" IsEnabled="False"/>
+
+                <Button Content="{DynamicResource cancel}" Grid.Column="4" IsEnabled="False"/>
 
                 <Button Content="{DynamicResource screenCapture}" Grid.Column="6"/>
             </Grid>
