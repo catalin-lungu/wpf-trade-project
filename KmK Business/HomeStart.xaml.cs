@@ -27,6 +27,11 @@ namespace KmK_Business
             InitializeComponent();
             vm = new HomeStartViewModel();
             this.DataContext = vm;
+        }               
+
+        private void inPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            vm.Password = inPassword.Password;
         }
     }
 }

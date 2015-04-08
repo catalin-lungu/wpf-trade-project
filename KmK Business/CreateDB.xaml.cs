@@ -27,7 +27,6 @@ namespace KmK_Business
             InitializeComponent();
         }
 
-
         public string GetDBFile()
         {
             return this.dbFile;

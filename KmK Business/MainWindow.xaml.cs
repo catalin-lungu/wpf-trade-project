@@ -25,11 +25,20 @@ namespace KmK_Business
         private MainWindow mw;
         public MainWindow()
         {
-            InitializeComponent();            
-            mw = this;
-            vm = new MainWindowViewModel();
-            this.DataContext = vm;
-            App.CurrentWindow = new HomeStart();
+            InitializeComponent();
+
+            if (DateTime.Now.Date > new DateTime(2015, 6 , 1))
+            {
+                MessageBox.Show("This alpha version has expired!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+            }
+            else
+            {
+                mw = this;
+                vm = new MainWindowViewModel();
+                this.DataContext = vm;
+                App.CurrentWindow = new HomeStart();
+            }
         }
 
         public void ChangeWindow(object newControl=null)
@@ -63,6 +72,11 @@ namespace KmK_Business
             {
                 mw.ContentHolder.Content = new HomeStart();
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeWindow(new HomeStart());
         }
         
 

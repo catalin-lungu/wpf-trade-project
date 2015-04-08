@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KmK_Business.ViewModel;
+using Xceed.Wpf.Toolkit;
 
 namespace KmK_Business
 {
@@ -22,11 +23,13 @@ namespace KmK_Business
     public partial class TradingJournal : UserControl
     {
         TradingJournalViewModel vm;
+        private static TradingJournal tj;
         public TradingJournal()
         {
             InitializeComponent();
             vm = new TradingJournalViewModel();
             this.DataContext = vm;
+            tj = this;
         }
         
 
@@ -43,6 +46,20 @@ namespace KmK_Business
                 vm.AccountMainTestVisibility = true;
             }
         }
+
+        private void rtfNotes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tjm = dataGrid.SelectedItem as KmK_Business.Model.TradingJournalModel;
+            if (tjm != null)
+            {
+                tjm.Notes = "";
+            }
+        }
+
+        //public static string GetNotes()
+        //{
+        //    //return tj.rtfNotes.HTML;
+        //}
     }
 
 

@@ -1,0 +1,381 @@
+﻿<UserControl x:Class="KmK_Business.RichTextEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:KmK_Business.RTF"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700" 
+             x:Name="m_Crl">
+    
+    <UserControl.Resources>
+        <ContextMenu x:Key="RTEditorContextMenu" Language="cs-CZ">
+            <MenuItem Header="{DynamicResource cut}" Command="{x:Static ApplicationCommands.Cut}">
+                <MenuItem.Icon>
+                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource copy}" Command="{x:Static ApplicationCommands.Copy}">
+                <MenuItem.Icon>
+                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource paste}" Command="{x:Static ApplicationCommands.Paste}">
+                <MenuItem.Icon>
+                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator/>
+            <!--MenuItem Header="Tisk" Command="{x:Static custom:RichTextEditor.PrintCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\Print.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/-->
+            <!--<MenuItem Header="Properties" Command="{x:Static local:MiscCommands.PropertiesCommand}">
+                <MenuItem.Icon>
+                    <Image Source="Resources\properties.png" Width="16"/>
+                </MenuItem.Icon>
+            </MenuItem>-->
+
+            <!--MenuItem Header="Insert picture" Command="{x:Static local:PictureCommands.InsertPictureCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="Resources\properties.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem-->
+        </ContextMenu>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Ribbon Grid.Row="0" Title="{Binding RibbonTitle}" SelectedIndex="0" Margin="5"
+                x:Name="rtfEditorRibbon">
+            <Ribbon.HelpPaneContent>
+                <ToggleButton Content="^" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"
+                              BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" />
+            </Ribbon.HelpPaneContent>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Visibility="Collapsed"/>                
+            </Ribbon.ApplicationMenu>
+            <Ribbon.Resources>
+                <!-- Layout Definitions -->
+                <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutClipboard">
+                    <RibbonGroupSizeDefinition>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </RibbonGroupSizeDefinition>
+                    <RibbonGroupSizeDefinition IsCollapsed="False" />
+                </RibbonGroupSizeDefinitionBaseCollection>
+
+                <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutFont">
+                    <RibbonGroupSizeDefinition>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="False"/>
+                    </RibbonGroupSizeDefinition>
+                    <RibbonGroupSizeDefinition IsCollapsed="False" />
+                </RibbonGroupSizeDefinitionBaseCollection>
+
+                <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutParagraph">
+                    <RibbonGroupSizeDefinition>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </RibbonGroupSizeDefinition>
+                    <RibbonGroupSizeDefinition IsCollapsed="False" />
+               </RibbonGroupSizeDefinitionBaseCollection>
+
+                <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutInsert">
+                    <RibbonGroupSizeDefinition>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </RibbonGroupSizeDefinition>
+                    <RibbonGroupSizeDefinition IsCollapsed="False"/>
+                </RibbonGroupSizeDefinitionBaseCollection>
+
+                <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutTable">
+                    <RibbonGroupSizeDefinition>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                    </RibbonGroupSizeDefinition>
+                    <RibbonGroupSizeDefinition IsCollapsed="True" />
+                 </RibbonGroupSizeDefinitionBaseCollection>
+
+                <!--<RibbonButton x:Key="BoldCommand" Command="ApplicationCommands.Copy" />-->
+                <!--<CommandBinding  x:Key="BoldCommand" Command="EditingCommands.ToggleBold"
+                                                     Executed="BoldCommandExecuted"
+                                                      />-->
+            </Ribbon.Resources>
+            
+            <Ribbon.QuickAccessToolBar >
+                <RibbonQuickAccessToolBar Margin="3" Height="25" >
+                    <RibbonButton Name="m_rbbtOpenDoc"  Command="ApplicationCommands.Open"                                  
+                                  SmallImageSource="imgs\RTFEditor\FileOpen.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\FileOpen.png"                                  
+                                  ToolTip="{DynamicResource open}"/>
+                    <RibbonButton Name="m_rbbtSaveDoc" Command="ApplicationCommands.Save" 
+                                  SmallImageSource="imgs\RTFEditor\FileSave.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\FileSave.png"                                 
+                                  ToolTip="{DynamicResource save}"/>
+                    <!--<RibbonButton Name="m_rbbtSaveAsDoc" Command="{Binding SaveAsDocCommand}" 
+                                  Content="Save As"/>-->
+                    <RibbonButton Name="m_rbbtNewDoc" Command="ApplicationCommands.New" 
+                                  SmallImageSource="imgs\RTFEditor\FileNew.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\FileNew.png"                                 
+                                  ToolTip="{DynamicResource new}"/>
+                    <RibbonButton Name="m_rbbtUndo" Command="ApplicationCommands.Undo" 
+                                  SmallImageSource="imgs\RTFEditor\EditUndo.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\EditUndo.png"                                 
+                                  ToolTip="{DynamicResource undo}"/>
+                    <RibbonButton Name="m_rbbtRedo" Command="ApplicationCommands.Redo" 
+                                  SmallImageSource="imgs\RTFEditor\EditRedo.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\EditRedo.png"                                 
+                                  ToolTip="{DynamicResource redo}"/>
+                    <RibbonButton Name="m_rbbtPrint" Command="ApplicationCommands.Print"                                  
+                                  SmallImageSource="imgs\RTFEditor\bold.png"                                     
+                                  LargeImageSource="imgs\RTFEditor\bold.png"                                 
+                                  ToolTip="{DynamicResource print}"/>
+                   
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>            
+            
+            <RibbonTab Header="{DynamicResource format}">
+                <RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutClipboard}" 
+                             Header="{DynamicResource clipboard}">
+                    <StackPanel Orientation="Horizontal">
+
+                        <RibbonButton Name="m_rbbtPaste" Command="ApplicationCommands.Paste" 
+                                  SmallImageSource="imgs\RTFEditor\EditPaste.png"                                 
+                                  ToolTip="{DynamicResource paste}"/>
+                        <RibbonButton Name="m_rbbtCut" Command="ApplicationCommands.Cut"
+                                  SmallImageSource="imgs\RTFEditor\Editcut.png"                                 
+                                  ToolTip="{DynamicResource cut}"/>
+                        <RibbonButton Name="m_rbbtCopy" Command="ApplicationCommands.Copy"
+                                  SmallImageSource="imgs\RTFEditor\EditCopy.png"                                 
+                                  ToolTip="{DynamicResource copy}"/>
+                    </StackPanel>
+                </RibbonGroup>
+
+                <!-- Font Group -->
+                <RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutFont}" 
+                             Header="{DynamicResource font}" >
+                    <Grid Width="{Binding ElementName=tab, Path=ActualWidth}" HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Width="{Binding ElementName=tab, Path=ActualWidth}" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                               
+                            <RibbonComboBox Name="m_rcbxFontName" ToolTip="{DynamicResource font}"  IsEditable="True"                                              
+                                            Grid.Column="0" HorizontalAlignment="Stretch" Margin="3">
+                                <RibbonGallery SelectedItem="{Binding SelectedFont}" MaxColumnCount="1" >
+                                    <!--SelectionChanged="OnFontNameSelectionChanged"-->
+                                        <RibbonGalleryCategory ItemsSource="{Binding Fonts.SystemFontFamilies}" />
+                                    </RibbonGallery>
+
+                                </RibbonComboBox>
+                                
+                            <RibbonComboBox Name="m_rcbxFontSize" ToolTip="{DynamicResource size}" IsEditable="True"
+                                                Grid.Column="1" HorizontalAlignment="Stretch" Margin="3">
+                                <RibbonGallery SelectedItem="{Binding SelectedFontSize}" MaxColumnCount="1" >
+                                        <RibbonGalleryCategory ItemsSource="{Binding FontSize}" />
+                                    </RibbonGallery>
+                                </RibbonComboBox>
+
+                            <!--<RibbonComboBox Name="m_rcbxFontName" Width="150"  />
+                            <RibbonComboBox Name="m_rcbxFontSize" Width="50" IsEditable="True" />-->
+
+                            <RibbonControlGroup Margin="0,5,0,0" Grid.Column="2" HorizontalAlignment="Stretch" >
+                                <RibbonToggleButton Name="m_rbtbBold"  Command="EditingCommands.ToggleBold"
+                                                SmallImageSource="imgs\RTFEditor\bold.png"                                
+                                                ToolTipTitle="{DynamicResource bold}"
+                                                ToolTipDescription="{DynamicResource makeBold}"/>
+                                <RibbonToggleButton Name="m_rbtbItalic"  Command="EditingCommands.ToggleItalic"
+                                                SmallImageSource="imgs\RTFEditor\italic.png"                                
+                                                ToolTipTitle="{DynamicResource italic}"
+                                                ToolTipDescription="{DynamicResource makeItalic}"/>
+                                <RibbonToggleButton Name="m_rbtbUnderline"  Command="EditingCommands.ToggleUnderline"
+                                                SmallImageSource="imgs\RTFEditor\underlined_text.png"                                
+                                                ToolTipTitle="{DynamicResource underline}"
+                                                ToolTipDescription="{DynamicResource makeUnderline}"/>
+
+                                <RibbonMenuButton Name="m_rbtbFontColor" Margin="8,0,0,0"
+                                              SmallImageSource="imgs\RTFEditor\pencil.png"                                
+                                              ToolTipTitle="{DynamicResource fontColor}"
+                                              ToolTipDescription="{DynamicResource changeFontColor}">
+                                    <RibbonControlGroup >
+                                        <!--<xctk:ColorPicker x:Name="m_colorPickerFont" SelectedColor="{Binding SelectedFontColor}" />-->
+                                        <local:ColorPick x:Name="m_colorPickerFont"/>
+                                    </RibbonControlGroup>
+                                </RibbonMenuButton>
+
+                                <RibbonMenuButton Name="m_rbtbFontBackgroundColor" Margin="8,0,0,0"
+                                              SmallImageSource="imgs\RTFEditor\fill.png"                                
+                                              ToolTipTitle="{DynamicResource backgroundColor}"
+                                              ToolTipDescription="{DynamicResource changeBackgroundColor}">
+                                    <RibbonControlGroup >
+                                        <local:ColorPick x:Name="m_colorBackgroundPickerFont"/>
+                                        <!--<xctk:ColorPicker x:Name="m_colorBackgroundPickerFont" />-->
+                                    </RibbonControlGroup>
+
+                                </RibbonMenuButton>
+
+                            </RibbonControlGroup>
+
+                        </Grid>
+
+                        <!--local:RibbonStackPanel Orientation="Horizontal"  Margin="0,5,0,0"-->
+                        
+                    </Grid>
+                    <!--/local:RibbonStackPanel-->
+
+
+                    <!--<RibbonControlGroup Margin="0,5,0,0">
+                        <RibbonToggleButton Name="m_rbtbSpellCheck" IsChecked="false"  Command="{Binding SpellCheckCommand}"/>
+                    </RibbonControlGroup>-->
+                </RibbonGroup>
+                <!-- Font Group -->
+
+                <!-- Paragraph Group -->
+                <RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutParagraph}" Header="{DynamicResource paragraph}">
+
+                    <Grid Width="{Binding ElementName=tab, Path=ActualWidth}" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
+                            <RibbonControlGroup Margin="0,5,0,0">
+                                <RibbonToggleButton Name="m_rbtbNumbering" Command="EditingCommands.ToggleNumbering"
+                                                SmallImageSource="imgs\RTFEditor\bold.png"                                 
+                                                ToolTip="{DynamicResource bold}"/>
+                                <RibbonToggleButton Name="m_rbtbBullets" Command="EditingCommands.ToggleBullets"
+                                                SmallImageSource="imgs\RTFEditor\bold.png"                                 
+                                                ToolTip="{DynamicResource bold}"/>
+                            </RibbonControlGroup>
+
+                            <RibbonControlGroup Margin="5,5,0,0">
+                                <RibbonButton Name="m_rbbtDecrease" Command="EditingCommands.DecreaseIndentation"
+                                          SmallImageSource="imgs\RTFEditor\indent_decrease.png"                                 
+                                          ToolTip="{DynamicResource indentDecrease}"/>
+                                <RibbonButton Name="m_rbbtIncrease" Command="EditingCommands.IncreaseIndentation"
+                                          SmallImageSource="imgs\RTFEditor\indent_increase.png"                                 
+                                          ToolTip="{DynamicResource indentIncrease}"/>
+                            </RibbonControlGroup>
+                        </StackPanel >
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal"  Margin="5,5,0,0">
+                            <RibbonControlGroup Margin="0,5,0,0" >
+
+                                <RibbonToggleButton Name="m_rbtbLeft" Command="EditingCommands.AlignLeft" 
+                                                    IsChecked="{Binding IsSelectedAlignLeft, Mode=TwoWay}"                                                    
+                                                    SmallImageSource="imgs\RTFEditor\align_left.png"                                 
+                                                    ToolTip="{DynamicResource alignLeft}"/>
+                                <RibbonToggleButton Name="m_rbtbRight" Command="EditingCommands.AlignCenter"
+                                                    IsChecked="{Binding IsSelectedAlignCenter, Mode=TwoWay}"
+                                                    SmallImageSource="imgs\RTFEditor\align_center.png"                                 
+                                                    ToolTip="{DynamicResource indentIncrease}"/>
+                                <RibbonToggleButton Name="m_rbtbCenter" Command="EditingCommands.AlignRight"
+                                                    IsChecked="{Binding IsSelectedAlignRight, Mode=TwoWay}" 
+                                                    SmallImageSource="imgs\RTFEditor\align_right.png"                                 
+                                                    ToolTip="{DynamicResource indentIncrease}"/>
+                                <RibbonToggleButton Name="m_rbtbJustify" Command="EditingCommands.AlignJustify"
+                                                    IsChecked="{Binding IsSelectedAlignJustify, Mode=TwoWay}" 
+                                                    SmallImageSource="imgs\RTFEditor\align_justify.png"                                 
+                                                    ToolTip="{DynamicResource indentIncrease}"/>
+                                
+                            </RibbonControlGroup>
+
+                        </StackPanel >
+                    </Grid>
+                </RibbonGroup>
+                <!-- Paragraph Group -->
+                
+            </RibbonTab>
+
+            <RibbonTab Header="{DynamicResource insert}">
+                <!-- Insert Group -->
+                <RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutInsert}" Header="{DynamicResource insert}" >
+
+                    <RibbonButton Name="m_rbbtInsertPicture" Command="{Binding InsertPictureCommand}" Height="Auto"
+                                  SmallImageSource="imgs\RTFEditor\insert_image.png"                                 
+                                  ToolTip="{DynamicResource indentIncrease}"/>
+                    <RibbonButton Name="m_rbbtInsertHyperlink" Command="{Binding InsertHyperlinkCommand}" Height="Auto"
+                                   SmallImageSource="imgs\RTFEditor\insert_hyperlink.png"                                 
+                                   ToolTip="{DynamicResource indentIncrease}"/>
+                    <RibbonButton Name="m_rbbtInsertLine" Command="{Binding InsertLineCommand}" Height="Auto"
+                                   SmallImageSource="imgs\RTFEditor\imsert_hor_line.png"                                 
+                                   ToolTip="{DynamicResource indentIncrease}"/>
+                    <RibbonButton 
+                                   SmallImageSource="imgs\RTFEditor\insert_date.png"                                 
+                                   ToolTip="{DynamicResource indentIncrease}"/>
+                    <RibbonButton 
+                                   SmallImageSource="imgs\RTFEditor\insert_date_time.png"/>
+                    <RibbonButton 
+                                   SmallImageSource="imgs\RTFEditor\insert_time.png"/>
+                    <RibbonButton 
+                                   SmallImageSource="imgs\RTFEditor\insert_symbol.png"/>
+                    <RibbonButton 
+                                   SmallImageSource="imgs\RTFEditor\screen_capture.png"/>
+                    
+                </RibbonGroup>
+                <!-- Insert Group -->
+            </RibbonTab>
+            
+            <RibbonTab Header="{DynamicResource table}">
+                <RibbonGroup GroupSizeDefinitions="{StaticResource RibbonLayoutTable}" Header="{DynamicResource table}" >
+
+                    <RibbonButton Name="m_rbbtInsertTable" Command="{Binding InsertTableCommand}" Height="Auto"/>
+
+                    <RibbonButton Name="m_rbbtInsertRowDown" Command="{Binding InsertRowDownCommand}"/>
+                    <RibbonButton Name="m_rbbtInsertRowUp" Command="{Binding InsertRowUpCommand}"/>
+                    <RibbonButton Name="m_rbbtInsertColumnLeft" Command="{Binding InsertColumnLeftCommand}"/>
+                    <RibbonButton Name="m_rbbtInsertColumnRight" Command="{Binding InsertColumnRightCommand}"/>
+
+                    <RibbonButton Name="m_rbbtDelRow" Command="{Binding DelRowCommand}"/>
+                    <RibbonButton Name="m_rbbtDelCol" Command="{Binding DelColCommand}"/>
+
+                    <RibbonButton Name="m_rbbtDelTable" Command="{Binding DelTableCommand}"/>
+
+                </RibbonGroup>
+
+            </RibbonTab>            
+            
+        </Ribbon>
+        
+        <RichTextBox x:Name="m_RTB" Grid.Row="1"  ContextMenu="{StaticResource RTEditorContextMenu}"
+			        AcceptsTab="True" AcceptsReturn="True"
+					HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible"
+                    VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"
+				    Visibility="Visible" />
+    </Grid>
+    
+</UserControl>

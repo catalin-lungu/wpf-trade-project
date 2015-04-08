@@ -4,6 +4,42 @@
     
     <system:String x:Key="windowTitle">KmK Trading</system:String>
     
+    <!--RTF Editor-->
+    <system:String x:Key="open">Open</system:String>
+    <system:String x:Key="new">New</system:String>
+    <system:String x:Key="undo">Undo</system:String>
+    <system:String x:Key="redo">Redo</system:String>
+    <system:String x:Key="print">Print</system:String>
+    
+    <system:String x:Key="format">Format</system:String>
+    <system:String x:Key="table">Table</system:String>
+    <system:String x:Key="cut">Cut</system:String>
+    <system:String x:Key="copy">Copy</system:String>
+    <system:String x:Key="paste">Paste</system:String>
+    <system:String x:Key="pasteFromClipboard">Paste from clipboard</system:String>
+    <system:String x:Key="clipboard">Clipboard</system:String>
+    <system:String x:Key="font">Font</system:String>
+    <system:String x:Key="size">Size</system:String>
+    <system:String x:Key="paragraph">Paragraph</system:String>
+    <system:String x:Key="insert">Insert</system:String>
+    <system:String x:Key="indentDecrease">Indent decrease</system:String>
+    <system:String x:Key="indentIncrease">Indent increase</system:String>
+    <system:String x:Key="alignLeft">Left</system:String>
+    <system:String x:Key="alignCenter">Center</system:String>
+    <system:String x:Key="alignRight">Right</system:String>
+    <system:String x:Key="alignJustify">Justify</system:String>
+
+    <system:String x:Key="bold">Bold</system:String>
+    <system:String x:Key="makeBold">Make bold</system:String>
+    <system:String x:Key="italic">Italic</system:String>
+    <system:String x:Key="makeItalic">Make italic</system:String>
+    <system:String x:Key="underline">Underline</system:String>
+    <system:String x:Key="makeUnderline">Make underline</system:String>
+    <system:String x:Key="fontColor">Font color</system:String>
+    <system:String x:Key="changeFontColor">Change font color</system:String>
+    <system:String x:Key="backgroundColor">Background color</system:String>
+    <system:String x:Key="changeBackgroundColor">Change background color</system:String>
+    
     <!--Top menu-->
     <system:String x:Key="file">File</system:String>
     <system:String x:Key="edit">Edit</system:String>
@@ -54,7 +90,8 @@
     <system:String x:Key="rules">Rules</system:String>
     <system:String x:Key="backTesting">Back-Testing</system:String>
     <system:String x:Key="liveTesting">Live-Testing</system:String>
-
+    <system:String x:Key="backTestResults">Back-Test Results</system:String>
+    
     <system:String x:Key="testTradingPlans">TEST TRADING PLANS</system:String>
     <system:String x:Key="validatedTradingPlan">VALIDATED TRADING PLANS</system:String>
 
@@ -125,8 +162,8 @@
     <system:String x:Key="accountNum">Account Num</system:String>
     <system:String x:Key="accType">Acc. Type</system:String>
     <system:String x:Key="accStatus">Acc. Status</system:String>
-
-    <!--<system:String x:Key="journal">Journal</system:String>-->
+    
+    <system:String x:Key="journalCamelCase">Journal</system:String>
     <system:String x:Key="summary">Summary</system:String>
     <system:String x:Key="totals">Totals:</system:String>
     <system:String x:Key="totalTrades">Total Trades:</system:String>

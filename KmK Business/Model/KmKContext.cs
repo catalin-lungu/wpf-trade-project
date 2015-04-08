@@ -15,6 +15,8 @@ namespace KmK_Business.Model
     {
         public DbSet<AdminDB> AdminDB { get; set; }
         public DbSet<Plan> Plan { get; set; }
+        public DbSet<Account> Account { get; set; }
+        public DbSet<TradingJournalModel> TradingJournalModel { get; set; }
 
 
         public KmKContext()

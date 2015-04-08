@@ -123,17 +123,26 @@
                     <Label Grid.Row="2" Content="{DynamicResource losses}" HorizontalAlignment="Right" Height="26"/>
                     <Label Grid.Row="3" Content="{DynamicResource balance}" HorizontalAlignment="Right" Height="26"/>
 
-                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="1" Grid.Column="2" Foreground="Red" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.WinsCount}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.WinsPips}"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.WinsAmounts, StringFormat=N2}"/>
 
-                    <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="2" Grid.Column="2" Foreground="Red" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="2" Grid.Column="3" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Foreground="Red" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.LossesCount}"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" Foreground="Red" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.LossesPips}"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" Foreground="Red" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.LossesAmounts, StringFormat=N2}"/>
 
-                    <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="3" Grid.Column="2" Foreground="Red" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="3" Grid.Column="3" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.BalanceCount}"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.BalancePips}"/>
+                    <TextBox Grid.Row="3" Grid.Column="3" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.BalanceAmounts, StringFormat=N2}"/>
 
                 </Grid>
 
@@ -159,12 +168,16 @@
                     <Label Grid.Column="2" Content="{DynamicResource withdrawalsDolar}" HorizontalAlignment="Left" Height="26"/>
                     <Label Grid.Column="3" Content="{DynamicResource netDolar}" HorizontalAlignment="Left" Height="26"/>
                 
-                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="1" Grid.Column="2" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Row="1" Grid.Column="3" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.Deposits, StringFormat=N2}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.Withdrawals, StringFormat=N2}"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.Net, StringFormat=N2}"/>
                 
                     <Label Grid.Column="1" Grid.Row="2" Content="{DynamicResource accBalanceDolar}" HorizontalAlignment="Left" Height="26"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.AccBalance, StringFormat=N2}"/>
                 </Grid>
 
                 <!--returns %-->
@@ -189,10 +202,14 @@
                     <Label Grid.Column="3" Content="{DynamicResource monthly}" HorizontalAlignment="Left" Height="26"/>
                     <Label Grid.Column="4" Content="{DynamicResource yearly}" HorizontalAlignment="Left" Height="26"/>
 
-                    <TextBox Grid.Column="1" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Column="2" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Column="3" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Column="4" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Height="25" Margin="3,2,10,2"
+                             Text="{Binding AccountOverviewObject.Daily}"/>
+                    <TextBox Grid.Column="2" Grid.Row="1" Height="25" Margin="3,2,10,2" 
+                             Text="{Binding AccountOverviewObject.Weekly}"/>
+                    <TextBox Grid.Column="3" Grid.Row="1" Height="25" Margin="3,2,10,2" 
+                             Text="{Binding AccountOverviewObject.Monthly}"/>
+                    <TextBox Grid.Column="4" Grid.Row="1" Height="25" Margin="3,2,10,2" 
+                             Text="{Binding AccountOverviewObject.Yearly}"/>
                     
                 </Grid>
 
@@ -216,8 +233,10 @@
                     <Label Grid.Column="3" Content="{DynamicResource profitFactor}" HorizontalAlignment="Left" Height="26" Margin="0,2,10,2" Grid.ColumnSpan="2"/>
                     <Label Grid.Column="2" Grid.Row="1" Content="{DynamicResource days}" HorizontalAlignment="Left" Height="26" Margin="0,2,10,2"/>
 
-                    <TextBox Grid.Column="1" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
-                    <TextBox Grid.Column="3" Grid.Row="1" Height="25" Margin="3,2,10,2"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Height="25" Margin="3,2,10,2" 
+                             Text="{Binding AccountOverviewObject.History}"/>
+                    <TextBox Grid.Column="3" Grid.Row="1" Height="25" Margin="3,2,10,2" 
+                             Text="{Binding AccountOverviewObject.ProfitFactor}"/>
                     
                 </Grid>
                 

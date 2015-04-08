@@ -1,0 +1,23 @@
+﻿<Window x:Class="KmK_Business.PlanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PlanWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Name"/>
+        <TextBox Grid.Column="1" x:Name="plName"/>
+
+        <CheckBox Content="Is test" IsChecked="True" Grid.Column="1" Grid.Row="1" x:Name="isDemo"/>
+
+        <Button Content="OK" Click="Button_Click" Grid.Column="1" Grid.Row="2"/>
+    </Grid>
+</Window>

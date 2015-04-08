@@ -36,7 +36,7 @@
         
 		<StackPanel>
 			<Image Source="/imgs/Home/home_header.png" VerticalAlignment="Top" HorizontalAlignment="Left" />
-            <TextBlock> 
+            <TextBlock Margin="10,0,0,0"> 
                 "The only thing standing between you<LineBreak/>
                 and your goal is the bullshit story you<LineBreak/>
                 keep telling yourserf as to why you<LineBreak/>

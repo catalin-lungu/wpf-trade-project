@@ -5,12 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:l="clr-namespace:KmK_Business.Convertor"
              xmlns:self="clr-namespace:KmK_Business.Model"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:re="clr-namespace:Adastra.RichEditorLibrary;assembly=Adastra.RichEditorLibrary"
              x:Class="KmK_Business.TradingPlan"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1000">
     <UserControl.Resources>
+        <system:Boolean x:Key="True">True</system:Boolean>
+        <system:Boolean x:Key="False">False</system:Boolean>
         <l:BoolToVisibilityConverter x:Key="converter" />
+        <l:BoolToPlanTypeConverter x:Key="boolToPlanTypeConverter" />
+        <l:BoolToRadioButtonConverter x:Key="BoolToRadioButtonConverter"/>
         <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
         <Style x:Key="GroupBoxLeft" TargetType="{x:Type GroupBox}">
         	<Setter Property="BorderBrush" Value="#D5DFE5"/>
@@ -57,7 +62,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" MinWidth="150"/>
+            <ColumnDefinition Width="auto" MinWidth="235"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -78,7 +83,11 @@
 
             <Label Content="navi"/>
 
-            <Label Grid.Row="1" Content="xl"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Button Content="Add" Command="{Binding AddPlanCommand}"/>
+                <Button Content="Edit" Command="{Binding EditPlanCommand}"/>
+                <Button Content="Delete" Command="{Binding DeletePlanCommand}"/>
+            </StackPanel>
 
             <TreeView Grid.Row="2" ItemsSource="{Binding TreeSource}" SelectedItemChanged="TreeView_SelectedItemChanged">
                 <TreeView.Resources>
@@ -113,6 +122,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.ColumnSpan="2" Background="#FFE8E8E8" >
@@ -212,21 +222,27 @@
                                     </Grid.RowDefinitions>
 
                                     <Label Content="{DynamicResource myFirstName}" Height="25" Margin="15,0,0,0" HorizontalAlignment="Left"/>
-                                    <TextBox Grid.Row="1" Height="25" Margin="15,3,0,3"/>
+                                    <TextBox Grid.Row="1" Height="25" Margin="15,3,0,3"
+                                             Text="{Binding SelectedPlan.FirstName}"/>
 
                                     <Label Grid.Column="1" Content="{DynamicResource lastName}" Height="25" Margin="5,0,0,0" HorizontalAlignment="Left"/>
-                                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="5,3,10,3"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="5,3,10,3"
+                                             Text="{Binding SelectedPlan.LastName}"/>
 
                                     <Label Grid.Row="2" Content="{DynamicResource tradingPlanType}" HorizontalAlignment="Right" Margin="0,3,10,3" Height="26"/>
-                                    <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,3,10,3" Height="25"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,3,10,3" Height="25" 
+                                              ItemsSource="{Binding TradingTypes, Converter={StaticResource boolToPlanTypeConverter}}"
+                                              SelectedItem="{Binding SelectedPlan.IsTest, Converter={StaticResource boolToPlanTypeConverter}}"/>
 
                                     <Label Grid.Row="3" Content="{DynamicResource tradingPlanName}" HorizontalAlignment="Right" Margin="0,3,10,3" Height="26"/>
-                                    <TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,10,3" Height="25"/>
+                                    <TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,10,3" Height="25"
+                                             Text="{Binding SelectedPlan.TradingPlanName}"/>
 
                                     <GroupBox Header="{DynamicResource tradingPlanLongDesc}" Grid.Row="4" Grid.ColumnSpan="2"
 												Style="{DynamicResource GroupBoxLeft}" Margin="0,5,0,0">
                                         <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-											TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,-5"/>
+											     TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,-5"
+                                                 Text="{Binding SelectedPlan.TradingPlanNameLongDesc}"/>
                                     </GroupBox>
 
                                 </Grid>
@@ -256,7 +272,7 @@
                         </Grid>-->
                         <!--<RichTextBox Grid.Column="1" />-->
 
-                        <re:RichTextEditor Grid.Column="1" x:Name="m_richTextEditor" />
+                        <!--<re:RichTextEditor Grid.Column="1" x:Name="m_richTextEditor" />-->
                                            
                         <!--<WebBrowser Grid.Column="1" x:Name="rtfGrid" />-->
 
@@ -282,17 +298,20 @@
 								  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
 								  Style="{DynamicResource GroupBoxLeft}" Margin="10,10,10,5">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.WhatKingOfPerson}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource myStrength}" Grid.Row="1" Style="{DynamicResource GroupBoxLeft}" Margin="10,10,5,5">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.MyStrength}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource myWeaknesses}" Grid.Row="1" Grid.Column="1" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,10,5">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.MyWeaknesses}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource doIWantToBeATrader}" Grid.Row="2" Style="{DynamicResource GroupBoxLeft}" Margin="10,10,5,5">
@@ -304,13 +323,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="WantToBeATrader" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbWantToBeATrader"/>
-                                    <RadioButton GroupName="WantToBeATrader" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.DoIWantToBeATraderYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource True}, Mode=TwoWay}" x:Name="rbWantToBeATrader"/>
+                                    <RadioButton GroupName="WantToBeATrader" Content="{DynamicResource no}" 
+                                                 IsChecked="{Binding SelectedPlan.DoIWantToBeATraderYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource False}, Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbWantToBeATrader}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap"  AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap"  AcceptsReturn="True" Margin="0,0,-5,-5"
+                                    Text="{Binding SelectedPlan.DoIWantToBeATrader}"/>
 
                             </Grid>
                         </GroupBox>
@@ -324,13 +347,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="ICommitEnoughTime" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbICommitEnoughTime"/>
-                                    <RadioButton GroupName="ICommitEnoughTime" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.CanICommitEnoughTimeYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource True}, Mode=TwoWay}" x:Name="rbICommitEnoughTime"/>
+                                    <RadioButton GroupName="ICommitEnoughTime" Content="{DynamicResource no}"
+                                                 IsChecked="{Binding SelectedPlan.CanICommitEnoughTimeYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource False}, Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbICommitEnoughTime}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                         Text="{Binding SelectedPlan.CanICommitEnoughTime}"/>
 
                             </Grid>
                         </GroupBox>
@@ -344,13 +371,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="IHaveFinancial" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbIHaveFinancial"/>
-                                    <RadioButton GroupName="IHaveFinancial" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.DoIHaveFinancialYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource True}, Mode=TwoWay}" x:Name="rbIHaveFinancial"/>
+                                    <RadioButton GroupName="IHaveFinancial" Content="{DynamicResource no}"
+                                                 IsChecked="{Binding SelectedPlan.DoIHaveFinancialYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource False}, Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbIHaveFinancial}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                         Text="{Binding SelectedPlan.DoIHaveFinancial}"/>
 
                             </Grid>
                         </GroupBox>
@@ -364,13 +395,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="IhandlePressure" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbIhandlePressure"/>
-                                    <RadioButton GroupName="IhandlePressure" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.CanIhandlePressureYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource True}, Mode=TwoWay}" x:Name="rbIhandlePressure"/>
+                                    <RadioButton GroupName="IhandlePressure" Content="{DynamicResource no}"
+                                                 IsChecked="{Binding SelectedPlan.CanIhandlePressureYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource False}, Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbIhandlePressure}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                         Text="{Binding SelectedPlan.CanIhandlePressure}"/>
 
                             </Grid>
                         </GroupBox>
@@ -384,13 +419,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="IGiveUpEasily" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbIGiveUpEasily"/>
-                                    <RadioButton GroupName="IGiveUpEasily" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.DoIGiveUpEasilyYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource True}, Mode=TwoWay}" x:Name="rbIGiveUpEasily"/>
+                                    <RadioButton GroupName="IGiveUpEasily" Content="{DynamicResource no}"
+                                                 IsChecked="{Binding SelectedPlan.DoIGiveUpEasilyYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter={StaticResource False}, Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbIGiveUpEasily}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                         Text="{Binding SelectedPlan.DoIGiveUpEasily}"/>
 
                             </Grid>
                         </GroupBox>
@@ -404,13 +443,17 @@
 
                                 <StackPanel Orientation="Horizontal" Background="AliceBlue" Margin="0,5,0,3">
                                     <RadioButton GroupName="IHaveEnoughWillpower" Content="{DynamicResource yes}" 
-										IsChecked="True" x:Name="rbIHaveEnoughWillpower"/>
-                                    <RadioButton GroupName="IHaveEnoughWillpower" Content="{DynamicResource no}"/>
+										         IsChecked="{Binding SelectedPlan.DoIHaveEnoughWillpowerYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter='true', Mode=TwoWay}" x:Name="rbIHaveEnoughWillpower"/>
+                                    <RadioButton GroupName="IHaveEnoughWillpower" Content="{DynamicResource no}"
+                                                 IsChecked="{Binding SelectedPlan.DoIHaveEnoughWillpowerYesNo, Converter={StaticResource BoolToRadioButtonConverter},
+                                                 ConverterParameter='false', Mode=TwoWay}"/>
                                 </StackPanel>
 
                                 <TextBox Grid.Row="1" IsEnabled="{Binding IsChecked, ElementName=rbIHaveEnoughWillpower}"
 									ScrollViewer.VerticalScrollBarVisibility="Auto"
-									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+									TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                         Text="{Binding SelectedPlan.DoIHaveEnoughWillpower}"/>
 
                             </Grid>
                         </GroupBox>
@@ -427,11 +470,18 @@
 
                         <GroupBox Header="{DynamicResource whatIsMyTradingGoal}" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" 
-								TextWrapping="Wrap"  AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap"  AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.WhatIsMyTradingGoal}"/>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="1" Margin="5,10,5,0" Style="{DynamicResource GroupBoxLeft}">
-                            <re:RichTextEditor  />
+                        <!--Text="{Binding SelectedPlan.GoalAdditionalNotesAndComments}"-->
+                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="1" Margin="5,10,5,0" Style="{DynamicResource GroupBoxLeft}"
+                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <!--<re:RichTextEditor  />-->
+                            <ContentControl Grid.Row="2" x:Name="goalRTFEditor" Content="{Binding GoalRTFEditor}"
+			                                HorizontalContentAlignment="Stretch" 
+			                                VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </GroupBox>
                     </Grid>
 
@@ -443,9 +493,9 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <GroupBox Header="{DynamicResource riskManagement}" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
@@ -459,14 +509,14 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Content="{DynamicResource maxRiskAccount}"/>
-                                <TextBox Grid.Row="1"/>
+                                <Label Content="{DynamicResource maxRiskAccount}" Height="26" Margin="5,2"/>
+                                <TextBox Grid.Row="1" Text="{Binding SelectedPlan.MaxRiskAccount}" Height="26" Margin="5,2"/>
 
-                                <Label Grid.Row="2" Content="{DynamicResource minRiskRewardRatio}"/>
-                                <TextBox Grid.Row="3"/>
+                                <Label Grid.Row="2" Content="{DynamicResource minRiskRewardRatio}" Height="26" Margin="5,2"/>
+                                <TextBox Grid.Row="3" Text="{Binding SelectedPlan.MinRiskRewardRatio}" Height="26" Margin="5,2"/>
 
-                                <Label Grid.Row="4" Content="{DynamicResource maxStopLoss}"/>
-                                <TextBox Grid.Row="5"/>
+                                <Label Grid.Row="4" Content="{DynamicResource maxStopLoss}" Height="26" Margin="5,2"/>
+                                <TextBox Grid.Row="5" Text="{Binding SelectedPlan.MaxStopLoss}" Height="26" Margin="5,2"/>
 
                             </Grid>
                         </GroupBox>
@@ -480,10 +530,10 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <CheckBox Content="{DynamicResource longTerm}"/>
-                                <CheckBox Grid.Row="1" Content="{DynamicResource swing}"/>
-                                <CheckBox Grid.Row="2" Content="{DynamicResource intraDay}"/>
-                                <CheckBox Grid.Row="3" Content="{DynamicResource scalp}"/>
+                                <CheckBox Content="{DynamicResource longTerm}" IsChecked="{Binding SelectedPlan.LongTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,10,5,3"/>
+                                <CheckBox Grid.Row="1" Content="{DynamicResource swing}" IsChecked="{Binding SelectedPlan.Swing, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="2" Content="{DynamicResource intraDay}" IsChecked="{Binding SelectedPlan.IntraDay, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="3" Content="{DynamicResource scalp}" IsChecked="{Binding SelectedPlan.Scalp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10,3,5,3"/>
                             </Grid>
                         </GroupBox>
 
@@ -503,28 +553,33 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <CheckBox Content="{DynamicResource supplyDemand}"/>
-                                <CheckBox Grid.Row="1" Content="{DynamicResource priceAnalysis}"/>
-                                <CheckBox Grid.Row="2" Content="{DynamicResource breakouts}"/>
-                                <CheckBox Grid.Row="3" Content="{DynamicResource momentum}"/>
-                                <CheckBox Grid.Row="4" Content="{DynamicResource divergence}"/>
+                                <CheckBox Content="{DynamicResource supplyDemand}" IsChecked="{Binding SelectedPlan.SupplyDemand, Mode=TwoWay}" Margin="10,10,5,3"/>
+                                <CheckBox Grid.Row="1" Content="{DynamicResource priceAnalysis}" IsChecked="{Binding SelectedPlan.PriceAnalysis, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="2" Content="{DynamicResource breakouts}" IsChecked="{Binding SelectedPlan.Breakouts, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="3" Content="{DynamicResource momentum}" IsChecked="{Binding SelectedPlan.Momentum, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="4" Content="{DynamicResource divergence}" IsChecked="{Binding SelectedPlan.Divergence, Mode=TwoWay}" Margin="10,3,5,5"/>
 
-                                <CheckBox Grid.Column="1" Content="{DynamicResource trend}"/>
-                                <CheckBox Grid.Row="1" Grid.Column="1" Content="{DynamicResource oscillatorsOverbought}"/>
-                                <CheckBox Grid.Row="2" Grid.Column="1" Content="{DynamicResource retracements}"/>
-                                <CheckBox Grid.Row="3" Grid.Column="1" Content="{DynamicResource candlePatterns}"/>
-                                <CheckBox Grid.Row="4" Grid.Column="1" Content="{DynamicResource historicalSupRes}"/>
+                                <CheckBox Grid.Column="1" Content="{DynamicResource trend}" IsChecked="{Binding SelectedPlan.Trend, Mode=TwoWay}" Margin="10,10,5,3"/>
+                                <CheckBox Grid.Row="1" Grid.Column="1" Content="{DynamicResource oscillatorsOverbought}" IsChecked="{Binding SelectedPlan.OscillatorsOverbought, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="2" Grid.Column="1" Content="{DynamicResource retracements}" IsChecked="{Binding SelectedPlan.Retracements, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="3" Grid.Column="1" Content="{DynamicResource candlePatterns}" IsChecked="{Binding SelectedPlan.CandlePatterns, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="4" Grid.Column="1" Content="{DynamicResource historicalSupRes}" IsChecked="{Binding SelectedPlan.HistoricalSupRes, Mode=TwoWay}" Margin="10,3,5,5"/>
 
-                                <CheckBox Grid.Column="2" Content="{DynamicResource maLines}"/>
-                                <CheckBox Grid.Row="1" Grid.Column="2" Content="{DynamicResource dailyOpenLine}"/>
-                                <CheckBox Grid.Row="2" Grid.Column="2" Content="{DynamicResource reversals}"/>
-                                <CheckBox Grid.Row="3" Grid.Column="2" Content="{DynamicResource chartPatterns}"/>
-                                <CheckBox Grid.Row="4" Grid.Column="2" Content="{DynamicResource roundNumbers}"/>
+                                <CheckBox Grid.Column="2" Content="{DynamicResource maLines}" IsChecked="{Binding SelectedPlan.MALines, Mode=TwoWay}" Margin="10,10,5,3"/>
+                                <CheckBox Grid.Row="1" Grid.Column="2" Content="{DynamicResource dailyOpenLine}" IsChecked="{Binding SelectedPlan.DailyOpenLine, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="2" Grid.Column="2" Content="{DynamicResource reversals}" IsChecked="{Binding SelectedPlan.Reversals, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="3" Grid.Column="2" Content="{DynamicResource chartPatterns}" IsChecked="{Binding SelectedPlan.ChartPatterns, Mode=TwoWay}" Margin="10,3,5,3"/>
+                                <CheckBox Grid.Row="4" Grid.Column="2" Content="{DynamicResource roundNumbers}" IsChecked="{Binding SelectedPlan.RoundNumbers, Mode=TwoWay}" Margin="10,3,5,5"/>
                             </Grid>
                         </GroupBox>
-
-                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
-                            <re:RichTextEditor  />
+                        <!--SelectedPlan.StrategyAdditionalNotesAndComments-->
+                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="2" Grid.ColumnSpan="2" 
+                                  Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0"
+                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <ContentControl Grid.Row="2" x:Name="strategyRTFEditor" Content="{Binding StrategyRTFEditor}"
+			                                HorizontalContentAlignment="Stretch" 
+			                                VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </GroupBox>
 
                     </Grid>
@@ -542,35 +597,284 @@
 
                         <GroupBox Header="{DynamicResource entryRule}" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.EntryRule}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource tradeManagementRule}" Grid.Row="1" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.TradeManagementRule}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource exitRule}" Grid.Row="2" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.ExitRule}"/>
                         </GroupBox>
 
                         <GroupBox Header="{DynamicResource additionalRules}" Grid.Row="3" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
                             <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"/>
+								TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,-5,-5"
+                                     Text="{Binding SelectedPlan.AdditionalRules}"/>
                         </GroupBox>
 
-                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="4" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0">
-                            <re:RichTextEditor  />
+                        <!--SelectedPlan.RulesAdditionalNotesAndComments-->
+                        <GroupBox Header="{DynamicResource additionalNotesAndComments}" Grid.Row="4" Style="{DynamicResource GroupBoxLeft}" Margin="5,10,5,0"
+                                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                            <ContentControl Grid.Row="2" x:Name="rulesRTFEditor" Content="{Binding RulesRTFEditor}"
+			                                HorizontalContentAlignment="Stretch" 
+			                                VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </GroupBox>
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="{DynamicResource backTesting}"/>
-                <TabItem Header="{DynamicResource liveTesting}"/>
+                <TabItem Header="{DynamicResource backTesting}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Visibility="{Binding JournalVisibility, Converter={StaticResource converter}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                
+                            </Grid>
+                            
+                            <!--grid-->
+                            <DataGrid x:Name="dataGrid" Grid.Row="1" ItemsSource="{Binding TradingJournal}" CanUserAddRows="False" SelectionUnit="FullRow"
+                                      AutoGenerateColumns="False" CanUserResizeColumns="True" SelectedItem="{Binding RowTradingJournal}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="{DynamicResource num}" Binding="{Binding Id}"/>
+                                    <DataGridTextColumn Header="{DynamicResource orderNum}" Binding="{Binding OrderNum}"/>
+                                    <DataGridTextColumn Header="{DynamicResource instrument}" Binding="{Binding Instrument}"/>
+                                    <DataGridTextColumn Header="{DynamicResource type}" Binding="{Binding Type}"/>
+                                    <DataGridTextColumn Header="{DynamicResource category}" Binding="{Binding Category}"/>
+                                    <DataGridTextColumn Header="{DynamicResource lotSize}" Binding="{Binding LotSize}"/>
+                                    <DataGridTextColumn Header="{DynamicResource entryPrice}" Binding="{Binding EntryPrice}"/>
+                                    <DataGridTextColumn Header="{DynamicResource entryDateAndTime}" Binding="{Binding EntryDate}"/>
+                                    <DataGridTextColumn Header="{DynamicResource ptPrice}" Binding="{Binding TPPrice}"/>
+                                    <DataGridTextColumn Header="{DynamicResource targetPips}" Binding="{Binding TargetPips}"/>
+                                    <DataGridTextColumn Header="{DynamicResource target}" Binding="{Binding Target}"/>
+                                    <DataGridTextColumn Header="{DynamicResource slPips}" Binding="{Binding SLPips}"/>
+                                    <DataGridTextColumn Header="{DynamicResource sl}" Binding="{Binding SL}"/>
+                                    <DataGridTextColumn Header="{DynamicResource rr}" Binding="{Binding RR}"/>
+                                    <DataGridTextColumn Header="{DynamicResource exitPrice}" Binding="{Binding ExitPrice}"/>
+                                    <DataGridTextColumn Header="{DynamicResource realizedRR}" Binding="{Binding RealizedRR}"/>
+                                    <DataGridTextColumn Header="{DynamicResource exitDate}" Binding="{Binding ExitDate}"/>
+                                    <DataGridTextColumn Header="{DynamicResource netPL}" Binding="{Binding NetPL}"/>
+                                    <DataGridTextColumn Header="{DynamicResource commission}" Binding="{Binding Commission}"/>
+                                    <DataGridTextColumn Header="{DynamicResource swap}" Binding="{Binding Swap}"/>
+                                    <DataGridTextColumn Header="{DynamicResource grossPL}" Binding="{Binding GrossPL}"/>
+                                    <DataGridTextColumn Header="{DynamicResource wonPips}" Binding="{Binding WonPips}"/>
+                                    <DataGridTextColumn Header="{DynamicResource lostPips}" Binding="{Binding LostPips}"/>
+                                    <DataGridTextColumn Header="{DynamicResource runBalance}" Binding="{Binding RunBalance}"/>
+                                    <DataGridTextColumn Header="{DynamicResource tradingTF}" Binding="{Binding TradingTF}"/>
+                                    <DataGridTextColumn Header="{DynamicResource entryTF}" Binding="{Binding EntryTF}"/>
+                                    <DataGridTextColumn Header="{DynamicResource duration}" Binding="{Binding Duration}"/>
+                                    <DataGridTextColumn Header="{DynamicResource entryReason}" Binding="{Binding EntryReason}"/>
+                                    <DataGridTextColumn Header="{DynamicResource exitReason}" Binding="{Binding ExitReason}"/>
+                                    <DataGridTextColumn Header="{DynamicResource strategyUsed}" Binding="{Binding StrategyUsed}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <!--totals-->
+                            <Grid Background="#FFE8E8E8" Grid.Row="2" Margin="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="{DynamicResource totals}" Height="26" />
+
+                                <Label Content="{DynamicResource totalTrades}" Grid.Column="2" 
+                       HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Column="3" Height="25" Margin="0,2"
+                             Text="{Binding TotalTrades}" IsReadOnly="True"/>
+
+                                <Label Content="{DynamicResource netPL}" Grid.Column="6"
+                       HorizontalAlignment="Right" Height="26"/>
+                                <TextBox Grid.Column="7" Height="25" Margin="0,2"
+                             Text="{Binding NetPL}" IsReadOnly="True"/>
+
+                                <Label Content="{DynamicResource changes}" Grid.Column="8"
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
+                                <TextBox Grid.Column="9" Height="25" Margin="0,2"
+                             Text="{Binding Charges}" IsReadOnly="True"/>
+
+                                <Label Content="{DynamicResource gross}" Grid.Column="10"
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
+                                <TextBox Grid.Column="11" Height="25" Margin="0,2"
+                             Text="{Binding GrossPL}" IsReadOnly="True"/>
+
+                                <Label Content="{DynamicResource wonPips}" Grid.Column="12"
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
+                                <TextBox Grid.Column="13" Height="25" Margin="0,2"
+                             Text="{Binding WonPips}" IsReadOnly="True"/>
+
+                                <Label Content="{DynamicResource lostPips}" Grid.Column="14"
+                       HorizontalAlignment="Right" Height="26" Margin="10,0,0,0"/>
+                                <TextBox Grid.Column="15" Height="25" Margin="0,2,5,2"
+                             Text="{Binding LostPips}" IsReadOnly="True"/>
+
+                            </Grid>
+
+                            <!--buttons-->
+                            <Grid Grid.Row="3" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Content="{DynamicResource addNewTrade}" Command="{Binding AddNewTradeCommand}"/>
+
+                                <Button Content="{DynamicResource edit}" Grid.Column="1" IsEnabled="False"/>
+
+                                <Button Content="{DynamicResource delete}" Grid.Column="2" Command="{Binding DeleteTradeCommand}"/>
+
+                                <Button Content="{DynamicResource save}" Grid.Column="3" Command="{Binding SaveTradeCommand}"/>
+
+                                <Button Content="{DynamicResource cancel}" Grid.Column="4" Command="{Binding CancelTradeCommand}"/>
+
+                                <Button Content="{DynamicResource screenCapture}" Grid.Column="6" Command="{Binding PrintScreenCommand}"/>
+                            </Grid>
+                        </Grid>
+
+                        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center" ResizeDirection="Rows" 
+			              ShowsPreview="True" >
+                        <GridSplitter.Template>
+                            <ControlTemplate TargetType="{x:Type GridSplitter}">
+                                <Grid>
+                                    <Button Content="...." />
+                                    <Rectangle Fill="#00FFFFFF" />
+                                </Grid>
+                            </ControlTemplate>
+                        </GridSplitter.Template>
+                    </GridSplitter>
+
+                        <TabControl Grid.Row="3" TabStripPlacement="Left" SelectedIndex="0" MinHeight="350"
+                        Visibility="{Binding JournalVisibility, Converter={StaticResource converter}}">
+                            <TabControl.Resources>
+                                <Style TargetType="TabItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="TabItem">
+                                                <Grid Name="Panel">
+                                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="Panel" Property="Background" Value="#FFFFE6B4" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="False">
+                                                        <Setter TargetName="Panel" Property="Background" Value="White" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TabControl.Resources>
+                            
+                            <TabItem Header="{DynamicResource backTestResults}">
+                                
+                            </TabItem>
+                           
+                            <TabItem Header="{DynamicResource chartSnapshots}">
+
+                            </TabItem>
+                            <TabItem Header="{DynamicResource notes}">                                
+                                <ContentControl Grid.Row="2" x:Name="notesRTFEditor" Content="{Binding NotesRTFEditor}"
+			                                HorizontalContentAlignment="Stretch" 
+			                                VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                            </TabItem>
+                            <TabItem Header="{DynamicResource accountTransactions}">
+
+                            </TabItem>
+                        </TabControl>
+
+
+                    </Grid>
+                </TabItem>
+                
+                <TabItem Header="{DynamicResource liveTesting}">
+                    
+                    
+                </TabItem>
 
             </TabControl>
 
+            <Grid Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--<Button Content="{DynamicResource addNewTrade}" Command="{Binding AddNewTradeCommand}"/>-->
+
+                <Button Content="{DynamicResource edit}" IsEnabled="False"/>
+
+                <Button Content="{DynamicResource delete}" Grid.Column="1" Command="{Binding DeletePlanCommand}"/>
+
+                <Button Content="Apply" Grid.Column="2" IsEnabled="False" />
+
+                <Button Content="{DynamicResource save}" Grid.Column="3" Command="{Binding SavePlanCommand}"/>
+
+                <Button Content="{DynamicResource cancel}" Grid.Column="4" Command="{Binding CancelPlanCommand}"/>
+
+                <Button Content="View/Customise/Print Trading Plan" Grid.Column="5"/>
+                <Button Content="{DynamicResource screenCapture}" Grid.Column="7" Command="{Binding PrintScreenCommand}" />
+            </Grid>
+            
         </Grid>
 
     </Grid>

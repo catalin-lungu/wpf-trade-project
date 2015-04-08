@@ -27,6 +27,15 @@ namespace KmK_Business
             }
         }
 
+        public static string ContextToolTip
+        {
+            set 
+            { 
+                ((MainWindow)System.Windows.Application.Current.MainWindow).vm.ContextToolTips = value;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).contextToolTips.UpdateLayout();
+            }
+            
+        }
 
         public static object CurrentWindow
         {

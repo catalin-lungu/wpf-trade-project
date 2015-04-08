@@ -74,11 +74,15 @@
                 
                 <TextBlock Text="{DynamicResource userName}" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                 <TextBox Text="{Binding UserName}" Grid.Row="1" Height="30"/>
-                <CheckBox Content="{DynamicResource remember}" Grid.Row="2" Margin="0,5,0,0"/>
-
+                <CheckBox Content="{DynamicResource remember}" Grid.Row="2" Margin="0,5,0,0"
+                          IsChecked="{Binding RememberUserName}"/>
+                
 				<TextBlock Text="{DynamicResource password}" Grid.Row="3" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                <TextBox Text="{Binding Password}" Grid.Row="4" Margin="0,10,0,0" Height="30"  />
-                <CheckBox Content="{DynamicResource remember}" Grid.Row="5" Margin="0,5,0,0"/>
+                <!--<TextBox Text="{Binding Password}" Grid.Row="4" Margin="0,10,0,0" Height="30"  />-->
+                <PasswordBox KeyUp="inPassword_KeyUp" x:Name="inPassword" Grid.Row="4" PasswordChar="*"
+                             Margin="0,10,0,0" Height="30"  />
+                <CheckBox Content="{DynamicResource remember}" Grid.Row="5" Margin="0,5,0,0"
+                          IsChecked="{Binding RememberPassword}"/>
                 
                 <Button Content="{DynamicResource login}" Command="{Binding LoginCommand}"
                         Grid.Row="6" Margin="0,10,0,0" Height="30"/>

@@ -73,18 +73,24 @@
                 
                 <Label Content="{DynamicResource wins}" HorizontalAlignment="Right"
                        Grid.Row="1" Height="26"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="3,2,10,2" Height="26"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Margin="3,2,10,2" Height="26"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="3,2,10,2" Height="26"
+                         Text="{Binding WinsCount}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Margin="3,2,10,2" Height="26"
+                         Text="{Binding WinsPips}"/>
 
                 <Label Content="{DynamicResource losses}" HorizontalAlignment="Right"
                        Grid.Row="2" Height="26"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Foreground="Red" Margin="3,2,10,2" Height="26"/>
-                <TextBox Grid.Row="2" Grid.Column="2" Foreground="Red" Margin="3,2,10,2" Height="26"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Foreground="Red" Margin="3,2,10,2" Height="26"
+                         Text="{Binding LossesCount}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Foreground="Red" Margin="3,2,10,2" Height="26"
+                         Text="{Binding LossesPips}"/>
 
                 <Label Content="{DynamicResource balance}" HorizontalAlignment="Right"
                        Grid.Row="3" Height="26" Margin="0"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,10,2" Height="26"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Margin="3,2,10,2" Height="26"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,10,2" Height="26"
+                         Text="{Binding BalanceCount}"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Margin="3,2,10,2" Height="26"
+                         Text="{Binding BalancePips}"/>
             </Grid>            
         </GroupBox>
         

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:KmK_Business.Convertor"
         WindowStartupLocation="CenterScreen" 
-        Title="{Binding WindowTitle}" Height="750" Width="1200"
+        Title="{Binding WindowTitle}" Height="750" Width="1200" MinWidth="1200" MinHeight="750"
         Icon="/imgs/app_title_bar.png">
 
     <Window.Resources>
@@ -24,7 +24,9 @@
         </Grid.RowDefinitions>
         
         <Menu Grid.ColumnSpan="2">
-            <MenuItem Header="{DynamicResource file}"/>
+            <MenuItem Header="{DynamicResource file}">
+                <MenuItem Header="Open - (Go on home window)" Click="MenuItem_Click"/>
+            </MenuItem>
             <MenuItem Header="{DynamicResource edit}" Visibility="{Binding VisibilityEdit, Converter={StaticResource converter}}"/>
             <MenuItem Header="{DynamicResource navigator}" Visibility="{Binding VisibilityMenuItem, Converter={StaticResource converter}}"/>
             <MenuItem Header="{DynamicResource view}" Visibility="{Binding VisibilityMenuItem, Converter={StaticResource converter}}"/>
@@ -52,7 +54,7 @@
                 <Label Content="{Binding DatabaseName}"/>
             </StackPanel>
 
-            <Label x:Name="contextToolTips" Content="{Binding ContextToolTips}" Grid.Column="1" HorizontalAlignment="Left"/>
+            <Label x:Name="contextToolTips" Content="{Binding ContextToolTips, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left"/>
             
         </Grid>
 

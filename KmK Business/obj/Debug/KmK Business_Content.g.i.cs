@@ -8,7 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ckeditor.js")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("htmlpage1.html")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editcopy.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editcopyformat.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editcut.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editpaste.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editredo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/editundo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/filenew.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/fileopen.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/filesave.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/fill.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgs/rtfeditor/pencil.png")]
 
 
