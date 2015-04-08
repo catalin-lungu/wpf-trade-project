@@ -90,3 +90,6 @@ C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\ImagePrope
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\ColorPick.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK_Business.Properties.Res.resources
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.exe.config
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.exe
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.pdb

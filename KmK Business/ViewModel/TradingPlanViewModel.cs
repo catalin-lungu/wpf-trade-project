@@ -517,7 +517,7 @@ namespace KmK_Business.ViewModel
         {
             try
             {
-                Window1 win = new Window1();
+                WindowPrintScreen win = new WindowPrintScreen();
                 win.WindowState = System.Windows.WindowState.Maximized;
                 win.ShowDialog();
             }
