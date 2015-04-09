@@ -6,7 +6,6 @@
              xmlns:l="clr-namespace:KmK_Business.Convertor"
              xmlns:self="clr-namespace:KmK_Business.Model"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:re="clr-namespace:Adastra.RichEditorLibrary;assembly=Adastra.RichEditorLibrary"
              x:Class="KmK_Business.TradingPlan"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1000">

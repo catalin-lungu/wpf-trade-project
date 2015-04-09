@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -108,7 +109,93 @@ namespace KmK_Business
         }
         #endregion
 
+        private ObservableCollection<string> fontsList = new ObservableCollection<string>();
+        public ObservableCollection<string> FontsList
+        {
+            get { return fontsList; }
+            set { fontsList = value;
+            NotifyPropertyChanged("FontsList");
+            }
+        }        
 
+        private string selectedFont;
+        public string SelectedFont
+        {
+            get { return selectedFont; }
+            set
+            {
+                selectedFont = value;
+                if (selectedFont != null)
+                {
+                    var selectedFontObj = Fonts.SystemFontFamilies.First(f => f.Source == selectedFont);
+                    if (selectedFontObj != null)
+                    {
+                        this.m_rcbxFontName.FontFamily = selectedFontObj; 
+                        this.SelectionFontFamily = selectedFont; 
+                    }
+                }
+                NotifyPropertyChanged("SelectedFont");
+            }
+        }
+
+        private ObservableCollection<double> sizesList= new ObservableCollection<double>();
+        public ObservableCollection<double> SizesList
+        {
+            get { return sizesList; }
+            set 
+            { 
+                sizesList = value;
+                NotifyPropertyChanged("SizesList");
+            }
+        }
+
+        private double selectedSize;
+        public double SelectedSize
+        {
+            get { return selectedSize; }
+            set 
+            { 
+                selectedSize = value;
+                if (selectedSize > 0)
+                {
+                    this.SelectionFontSize = selectedSize.ToString();
+                }
+                this.m_rbbtPaste.IsEnabled = true;
+                NotifyPropertyChanged("SelectedSize");
+            }
+        }
+
+        private Color selectedFontColor;
+        public Color SelectedFontColor
+        {
+            get { return selectedFontColor; }
+            set 
+            { 
+                selectedFontColor = value;
+                if (selectedFontColor != null)
+                {
+                    OnFontColorChanged(selectedFontColor);
+                }
+                NotifyPropertyChanged("SelectedFontColor");
+            }
+        }
+
+        private Color selectedBackgroundColor;
+        public Color SelectedBackgroundColor
+        {
+            get { return selectedBackgroundColor; }
+            set 
+            { 
+                selectedBackgroundColor = value;
+                if (selectedBackgroundColor != null)
+                {
+                    OnFontBackgroundColorChanged(selectedBackgroundColor);
+                }
+                NotifyPropertyChanged("SelectedBackgroundColor");
+            }
+        }
+
+        #region collapse ribbon
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             ContentControl contentControl = FindVisualChildByName<ContentControl>(rtfEditorRibbon, "mainItemsPresenterHost");
@@ -143,6 +230,136 @@ namespace KmK_Business
             }
             return null;
         }
+        #endregion
+
+        #region commands insert
+
+        private DelegateCommand insertPictureCommand;
+        private DelegateCommand insertHyperlinkCommand;
+        private DelegateCommand insertLineCommand;
+
+        private DelegateCommand insertDateCommand;
+        private DelegateCommand insertDateTimeCommand;
+        private DelegateCommand insertTimeCommand;
+
+        private DelegateCommand insertSymbolCommand;
+        private DelegateCommand insertCaptureCommand;
+
+        public ICommand InsertPictureCommand
+        {
+            get
+            {
+                if (insertPictureCommand == null)
+                {
+                    insertPictureCommand = new DelegateCommand(InsertPicture);
+                }
+                return insertPictureCommand;
+            }
+        }
+        public ICommand InsertHyperlinkCommand
+        {
+            get
+            {
+                if (insertHyperlinkCommand == null)
+                {
+                    insertHyperlinkCommand = new DelegateCommand(InsertHyperlink);
+                }
+                return insertHyperlinkCommand;
+            }
+        }
+        public ICommand InsertLineCommand
+        {
+            get
+            {
+                if (insertLineCommand == null)
+                {
+                    insertLineCommand = new DelegateCommand(InsertLine);
+                }
+                return insertLineCommand;
+            }
+        }
+
+        public ICommand InsertDateCommand
+        {
+            get
+            {
+                if (insertDateCommand == null)
+                {
+                    insertDateCommand = new DelegateCommand(InsertDate);
+                }
+                return insertDateCommand;
+            }
+        }
+        public ICommand InsertDateTimeCommand
+        {
+            get
+            {
+                if (insertDateTimeCommand == null)
+                {
+                    insertDateTimeCommand = new DelegateCommand(InsertDateTime);
+                }
+                return insertDateTimeCommand;
+            }
+        }
+        public ICommand InsertTimeCommand
+        {
+            get
+            {
+                if (insertTimeCommand == null)
+                {
+                    insertTimeCommand = new DelegateCommand(InsertTime);
+                }
+                return insertTimeCommand;
+            }
+        }
+
+        public ICommand InsertSymbolCommand
+        {
+            get
+            {
+                if (insertSymbolCommand == null)
+                {
+                    insertSymbolCommand = new DelegateCommand(InsertSymbol);
+                }
+                return insertSymbolCommand;
+            }
+        }
+        public ICommand InsertCaptureCommand
+        {
+            get
+            {
+                if (insertCaptureCommand == null)
+                {
+                    insertCaptureCommand = new DelegateCommand(InsertCapture);
+                }
+                return insertCaptureCommand;
+            }
+        }
+        
+        void InsertPicture()
+        {
+            PictureCommands.OnInsertPicture(this, null);
+        }
+        void InsertHyperlink()
+        {
+            PictureCommands.OnInsertHyperlink(this, null);
+        }
+        void InsertLine()
+        {
+            PictureCommands.OnInsertLine(this, null);
+        }
+
+        void InsertDate()
+        { }
+        void InsertDateTime()
+        { }
+        void InsertTime()
+        { }
+        void InsertSymbol()
+        { }
+        void InsertCapture()
+        { }
+        #endregion
 
 
         #region | Constants |
@@ -218,12 +435,12 @@ namespace KmK_Business
 
             foreach (FontFamily family in Fonts.SystemFontFamilies.OrderBy(f => f.Source))
             {
-                //RibbonComboBox. rci = new RibbonComboBoxItem();
-                //rci.Content = family.Source;
-                //rci.FontFamily = family;
-                //rci.FontSize = 13;
-                m_rcbxFontName.Items.Add(family);
+                //add name font
+                FontsList.Add(family.Source);
             }
+            SelectedFont = "Calibri";
+            SizesList = new ObservableCollection<double>() { 8, 9, 10, 11, 12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+            SelectedSize = 13;
 
             this.CommandBindings.Add(new CommandBinding(RichTextEditor.HotKeySave, this.SaveDocCommandExecuted));
             RichTextEditor.HotKeySave.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Alt));
@@ -259,14 +476,12 @@ namespace KmK_Business
             this.m_RTB.FontFamily = new FontFamily("Tahoma");
             this.DataContext = this;
 
-            this.m_colorPickerFont.ColorAutomatic = Brushes.Black.Color;
-            this.m_colorBackgroundPickerFont.ColorAutomatic = Brushes.White.Color;
+            //this.m_colorPickerFont.ColorAutomatic = Brushes.Black.Color;
+            //this.m_colorBackgroundPickerFont.ColorAutomatic = Brushes.White.Color;
 
             //this.m_colorPickerFont.SelectedColorChanged += new ColorChangedEventHandler(OnFontColorChanged);
            // this.m_colorBackgroundPickerFont.SelectedColorChanged += new ColorChangedEventHandler(OnFontBackgroundColorChanged);
 
-            //m_rcbxFontName.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
-            //m_rcbxFontSize.ItemsSource = new List<double>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
         }
 
         private void BindRibbonCommands()
@@ -451,25 +666,32 @@ namespace KmK_Business
             richEditor.RichTextBox.SpellCheck.IsEnabled = value;
         }
 
-        private void OnFontSizeSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (null != this.m_rcbxFontSize.SelectionBoxItem)
-            {
-                this.SelectionFontSize = ((object)m_rcbxFontSize.SelectionBoxItem) as string;
-            }
-            this.m_rbbtPaste.IsEnabled = true;
-            //this.m_rbbtPaste.Command.CanExecute(
-        }
+        //private void OnFontSizeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (null != this.m_rcbxFontSize.SelectionBoxItem)
+        //    {
+        //        int size = Convert.ToInt32(m_rcbxFontSize.SelectionBoxItem);
+        //        if (size > 0)
+        //        {
+        //            this.SelectionFontSize = size.ToString();
+        //        }
+        //    }
+        //    this.m_rbbtPaste.IsEnabled = true;
+        //    //this.m_rbbtPaste.Command.CanExecute(
+        //}
 
-        private void OnFontNameSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (null != this.m_rcbxFontName.SelectionBoxItem)
-            {
-                string strFontFamily = ((object)m_rcbxFontName.SelectionBoxItem) as string;
-                this.m_rcbxFontName.FontFamily = new FontFamily(strFontFamily);
-                this.SelectionFontFamily = strFontFamily;
-            }
-        }
+        //private void OnFontNameSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (null != this.m_rcbxFontName.SelectionBoxItem)
+        //    {
+        //        var fontFamily = m_rcbxFontName.SelectionBoxItem as FontFamily;
+        //        if (fontFamily != null)
+        //        {
+        //            this.m_rcbxFontName.FontFamily = fontFamily;
+        //            this.SelectionFontFamily = fontFamily.FamilyMaps[0].Target;
+        //        }
+        //    }
+        //}
 
         private void SelectRibbonCbxItem(RibbonComboBox ribComboBox, string strFontName)
         {
@@ -1535,10 +1757,10 @@ namespace KmK_Business
             TableCommands.OnDeleteColumns(this, e);
         }
 
-        private void InsertPictureCommandExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            PictureCommands.OnInsertPicture(this, e);
-        }
+        //private void InsertPictureCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    PictureCommands.OnInsertPicture(this, e);
+        //}
 
         private void InsertLineCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -1678,17 +1900,17 @@ namespace KmK_Business
 
         //}
 
-        private void FontColorCommandExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.OnFontColorChanged(this.m_colorPickerFont.Color);
-            //this.m_RTB.Focus();
-        }
+        //private void FontColorCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    this.OnFontColorChanged(this.m_colorPickerFont.SelectedColor);
+        //    //this.m_RTB.Focus();
+        //}
 
-        private void FontBackgroundColorCommandExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            this.OnFontBackgroundColorChanged(this.m_colorBackgroundPickerFont.Color);
-            //this.m_RTB.Focus();
-        }
+        //private void FontBackgroundColorCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    this.OnFontBackgroundColorChanged(this.m_colorBackgroundPickerFont.SelectedColor);
+        //    //this.m_RTB.Focus();
+        //}
 
         void OnFontColorChanged(Color color)
         {

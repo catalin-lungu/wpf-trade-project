@@ -90,6 +90,88 @@ C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\ImagePrope
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.g.cs
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\RTF\Controls\ColorPick.baml
 C:\Users\lci\Desktop\KmK Business\KmK Business\obj\Debug\KmK_Business.Properties.Res.resources
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\AccountWindow.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\AccountGroupBoxControl.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\CreateDB.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\languages\Dictionary.en-UK.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\PlanGroupBoxControl.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\PlanWindow.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\HyperlinkPropertiesDialog.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\ImagePropertiesDialog.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\MainViewStyles.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\Style\ControlsStyle.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\WindowPrintScreen.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\App.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\AccountWindow.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\AccountGroupBoxControl.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\CreateDB.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\Home.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\HomeStart.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\MainWindow.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\MenuNavigator.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\PlanGroupBoxControl.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\PlanWindow.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTFEditor.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\HyperlinkPropertiesDialog.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\ImagePropertiesDialog.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\TradingJournal.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\TradingPlan.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\WindowPrintScreen.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\App.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business_MarkupCompile.cache
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business_MarkupCompile.lref
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.exe.config
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.csprojResolveAssemblyReference.cache
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.exe.manifest
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.application
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.exe
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\KmK Business.pdb
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\EntityFramework.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\ServiceStack.OrmLite.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\ServiceStack.OrmLite.Sqlite.Windows.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\SQLite.Designer.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\System.Data.SQLite.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\WPFControlsLibrary.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\WPFControlsLibraryInterface.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\EntityFramework.xml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\SQLite.Designer.pdb
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\System.Data.SQLite.pdb
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\Home.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\HomeStart.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\MainWindow.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\MenuNavigator.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\RTFEditor.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\TradingJournal.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\TradingPlan.baml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.g.resources
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK_Business.Properties.Res.resources
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK_Business.Properties.Resources.resources
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.csproj.GenerateResource.Cache
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.TrustInfo.xml
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.exe.manifest
+C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.application
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.exe
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.pdb

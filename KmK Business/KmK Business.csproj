@@ -242,9 +242,6 @@
       <DependentUpon>RTFEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="RTF\AcmBitmapImageHolder.cs" />
-    <Compile Include="RTF\Controls\ColorPick.xaml.cs">
-      <DependentUpon>ColorPick.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RTF\DrawingIcon.cs" />
     <Compile Include="RTF\Controls\HyperlinkPropertiesDialog.xaml.cs">
       <DependentUpon>HyperlinkPropertiesDialog.xaml</DependentUpon>
@@ -295,8 +292,8 @@
     <Compile Include="ViewModel\RTFEditorViewModel.cs" />
     <Compile Include="ViewModel\TradingJournalViewModel.cs" />
     <Compile Include="ViewModel\TradingPlanViewModel.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="WindowPrintScreen.xaml.cs">
+      <DependentUpon>WindowPrintScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="AccountWindow.xaml">
       <SubType>Designer</SubType>
@@ -350,10 +347,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RTF\Controls\ColorPick.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="RTF\Controls\HyperlinkPropertiesDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -382,7 +375,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="WindowPrintScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -476,12 +469,6 @@
     <Resource Include="imgs\TradingJournal\screen_cap.png" />
     <Resource Include="imgs\TradingJournal\trading_journal.png" />
     <Resource Include="imgs\TradingJournal\tranaction_history.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RichEditorLibrary\RichEditorLibrary.csproj">
-      <Project>{b535f14b-4943-48e7-a1c2-9c82b1a33dab}</Project>
-      <Name>RichEditorLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -711,6 +698,12 @@
     <Resource Include="imgs\RTFEditor\FileSave.png" />
     <Resource Include="imgs\RTFEditor\fill.png" />
     <Resource Include="imgs\RTFEditor\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imgs\RTFEditor\text_list_bullets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imgs\RTFEditor\text_list_numbers.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />

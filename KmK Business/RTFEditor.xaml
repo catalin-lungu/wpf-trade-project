@@ -10,40 +10,23 @@
              x:Name="m_Crl">
     
     <UserControl.Resources>
-        <ContextMenu x:Key="RTEditorContextMenu" Language="cs-CZ">
+        <ContextMenu x:Key="RTEditorContextMenu" Language="en-UK">
             <MenuItem Header="{DynamicResource cut}" Command="{x:Static ApplicationCommands.Cut}">
                 <MenuItem.Icon>
-                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                    <Image Source="imgs\RTFEditor\EditCut.png" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="{DynamicResource copy}" Command="{x:Static ApplicationCommands.Copy}">
                 <MenuItem.Icon>
-                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                    <Image Source="imgs\RTFEditor\EditCopy.png" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="{DynamicResource paste}" Command="{x:Static ApplicationCommands.Paste}">
                 <MenuItem.Icon>
-                    <Image Source="imgs\RTFEditor\bold.png" Width="16"/>
+                    <Image Source="imgs\RTFEditor\EditPaste.png" Width="16"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <Separator/>
-            <!--MenuItem Header="Tisk" Command="{x:Static custom:RichTextEditor.PrintCommand}">
-                    <MenuItem.Icon>
-                        <Image Source="Resources\Print.png" Width="16"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator/-->
-            <!--<MenuItem Header="Properties" Command="{x:Static local:MiscCommands.PropertiesCommand}">
-                <MenuItem.Icon>
-                    <Image Source="Resources\properties.png" Width="16"/>
-                </MenuItem.Icon>
-            </MenuItem>-->
-
-            <!--MenuItem Header="Insert picture" Command="{x:Static local:PictureCommands.InsertPictureCommand}">
-                    <MenuItem.Icon>
-                        <Image Source="Resources\properties.png" Width="16"/>
-                    </MenuItem.Icon>
-                </MenuItem-->
+                        
         </ContextMenu>
     </UserControl.Resources>
 
@@ -66,7 +49,7 @@
                 <!-- Layout Definitions -->
                 <RibbonGroupSizeDefinitionBaseCollection x:Key="RibbonLayoutClipboard">
                     <RibbonGroupSizeDefinition>
-                        <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
+                        <RibbonControlSizeDefinition ImageSize="Large" IsLabelVisible="True"/>
                         <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
                         <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
                         <RibbonControlSizeDefinition ImageSize="Small" IsLabelVisible="True"/>
@@ -131,7 +114,8 @@
             
             <Ribbon.QuickAccessToolBar >
                 <RibbonQuickAccessToolBar Margin="3" Height="25" >
-                    <RibbonButton Name="m_rbbtOpenDoc"  Command="ApplicationCommands.Open"                                  
+                    <RibbonButton Name="m_rbbtOpenDoc"  Command="ApplicationCommands.Open"  
+                                  CanAddToQuickAccessToolBarDirectly="True"
                                   SmallImageSource="imgs\RTFEditor\FileOpen.png"                                     
                                   LargeImageSource="imgs\RTFEditor\FileOpen.png"                                  
                                   ToolTip="{DynamicResource open}"/>
@@ -190,29 +174,30 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                               
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
                             <RibbonComboBox Name="m_rcbxFontName" ToolTip="{DynamicResource font}"  IsEditable="True"                                              
-                                            Grid.Column="0" HorizontalAlignment="Stretch" Margin="3">
-                                <RibbonGallery SelectedItem="{Binding SelectedFont}" MaxColumnCount="1" >
-                                    <!--SelectionChanged="OnFontNameSelectionChanged"-->
-                                        <RibbonGalleryCategory ItemsSource="{Binding Fonts.SystemFontFamilies}" />
-                                    </RibbonGallery>
-
-                                </RibbonComboBox>
+                                            Grid.Column="0" HorizontalAlignment="Stretch" Margin="3" >
+                                <RibbonGallery SelectedItem="{Binding SelectedFont}" MaxColumnCount="1" >                                   
+                                    <RibbonGalleryCategory ItemsSource="{Binding FontsList}" />                                    
+                                </RibbonGallery>
+                            </RibbonComboBox>
                                 
                             <RibbonComboBox Name="m_rcbxFontSize" ToolTip="{DynamicResource size}" IsEditable="True"
-                                                Grid.Column="1" HorizontalAlignment="Stretch" Margin="3">
-                                <RibbonGallery SelectedItem="{Binding SelectedFontSize}" MaxColumnCount="1" >
-                                        <RibbonGalleryCategory ItemsSource="{Binding FontSize}" />
-                                    </RibbonGallery>
-                                </RibbonComboBox>
+                                            Grid.Column="1" HorizontalAlignment="Stretch" Margin="3">
+                                <RibbonGallery SelectedItem="{Binding SelectedSize}" MaxColumnCount="1" >
+                                    <RibbonGalleryCategory ItemsSource="{Binding SizesList}" />                                    
+                                </RibbonGallery>                                
+                            </RibbonComboBox>
 
                             <!--<RibbonComboBox Name="m_rcbxFontName" Width="150"  />
                             <RibbonComboBox Name="m_rcbxFontSize" Width="50" IsEditable="True" />-->
 
-                            <RibbonControlGroup Margin="0,5,0,0" Grid.Column="2" HorizontalAlignment="Stretch" >
+                            <RibbonControlGroup Margin="0,5,0,0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" >
                                 <RibbonToggleButton Name="m_rbtbBold"  Command="EditingCommands.ToggleBold"
                                                 SmallImageSource="imgs\RTFEditor\bold.png"                                
                                                 ToolTipTitle="{DynamicResource bold}"
@@ -231,8 +216,7 @@
                                               ToolTipTitle="{DynamicResource fontColor}"
                                               ToolTipDescription="{DynamicResource changeFontColor}">
                                     <RibbonControlGroup >
-                                        <!--<xctk:ColorPicker x:Name="m_colorPickerFont" SelectedColor="{Binding SelectedFontColor}" />-->
-                                        <local:ColorPick x:Name="m_colorPickerFont"/>
+                                        <xctk:ColorPicker x:Name="m_colorPickerFont" SelectedColor="{Binding SelectedFontColor}" />                                       
                                     </RibbonControlGroup>
                                 </RibbonMenuButton>
 
@@ -241,8 +225,7 @@
                                               ToolTipTitle="{DynamicResource backgroundColor}"
                                               ToolTipDescription="{DynamicResource changeBackgroundColor}">
                                     <RibbonControlGroup >
-                                        <local:ColorPick x:Name="m_colorBackgroundPickerFont"/>
-                                        <!--<xctk:ColorPicker x:Name="m_colorBackgroundPickerFont" />-->
+                                        <xctk:ColorPicker x:Name="m_colorBackgroundPickerFont" SelectedColor="{Binding SelectedBackgroundColor}"/>
                                     </RibbonControlGroup>
 
                                 </RibbonMenuButton>
@@ -269,16 +252,19 @@
                     <Grid Width="{Binding ElementName=tab, Path=ActualWidth}" HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
                         <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
                             <RibbonControlGroup Margin="0,5,0,0">
                                 <RibbonToggleButton Name="m_rbtbNumbering" Command="EditingCommands.ToggleNumbering"
-                                                SmallImageSource="imgs\RTFEditor\bold.png"                                 
+                                                SmallImageSource="imgs\RTFEditor\text_list_numbers.png" Width="16" Height="16"                                
                                                 ToolTip="{DynamicResource bold}"/>
                                 <RibbonToggleButton Name="m_rbtbBullets" Command="EditingCommands.ToggleBullets"
-                                                SmallImageSource="imgs\RTFEditor\bold.png"                                 
+                                                SmallImageSource="imgs\RTFEditor\text_list_bullets.png" Width="16" Height="16"                                 
                                                 ToolTip="{DynamicResource bold}"/>
                             </RibbonControlGroup>
 
@@ -292,7 +278,7 @@
                             </RibbonControlGroup>
                         </StackPanel >
 
-                        <StackPanel Grid.Column="1" Orientation="Horizontal"  Margin="5,5,0,0">
+                        <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="5,5,0,0">
                             <RibbonControlGroup Margin="0,5,0,0" >
 
                                 <RibbonToggleButton Name="m_rbtbLeft" Command="EditingCommands.AlignLeft" 
@@ -310,8 +296,7 @@
                                 <RibbonToggleButton Name="m_rbtbJustify" Command="EditingCommands.AlignJustify"
                                                     IsChecked="{Binding IsSelectedAlignJustify, Mode=TwoWay}" 
                                                     SmallImageSource="imgs\RTFEditor\align_justify.png"                                 
-                                                    ToolTip="{DynamicResource indentIncrease}"/>
-                                
+                                                    ToolTip="{DynamicResource indentIncrease}"/>                                
                             </RibbonControlGroup>
 
                         </StackPanel >
@@ -334,16 +319,17 @@
                     <RibbonButton Name="m_rbbtInsertLine" Command="{Binding InsertLineCommand}" Height="Auto"
                                    SmallImageSource="imgs\RTFEditor\imsert_hor_line.png"                                 
                                    ToolTip="{DynamicResource indentIncrease}"/>
-                    <RibbonButton 
+
+                    <RibbonButton  Command="{Binding InsertDateCommand}"
                                    SmallImageSource="imgs\RTFEditor\insert_date.png"                                 
                                    ToolTip="{DynamicResource indentIncrease}"/>
-                    <RibbonButton 
+                    <RibbonButton Command="{Binding InsertDateTimeCommand}"
                                    SmallImageSource="imgs\RTFEditor\insert_date_time.png"/>
-                    <RibbonButton 
+                    <RibbonButton Command="{Binding InsertTimeCommand}"
                                    SmallImageSource="imgs\RTFEditor\insert_time.png"/>
-                    <RibbonButton 
+                    <RibbonButton Command="{Binding InsertSymbolCommand}"
                                    SmallImageSource="imgs\RTFEditor\insert_symbol.png"/>
-                    <RibbonButton 
+                    <RibbonButton Command="{Binding InsertCaptureCommand}"
                                    SmallImageSource="imgs\RTFEditor\screen_capture.png"/>
                     
                 </RibbonGroup>

@@ -274,11 +274,16 @@ namespace KmK_Business.RTF
             paragraph.Inlines.Add(myPath);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">RichTextEditor object</param>
+        /// <param name="e"></param>
         public static void OnInsertPicture(object sender, ExecutedRoutedEventArgs e)
         {
             RichTextEditor control = (RichTextEditor)sender;
             RichTextBox richTextBox = control.RichTextBox;
-
+            
             //###
             TextPointer textPosition = richTextBox.Selection.Start;
 
@@ -331,6 +336,7 @@ namespace KmK_Business.RTF
                 }
             }
         }
+
 
         /// <summary>
         /// Handler for editing of the picture
