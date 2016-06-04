@@ -122,7 +122,7 @@ namespace KmK_Business.ViewModel
             {                
                 selectedPlan = value;
                                 
-                if (!string.IsNullOrWhiteSpace(selectedPlan.GoalAdditionalNotesAndComments))
+                if (!string.IsNullOrWhiteSpace(selectedPlan?.GoalAdditionalNotesAndComments))
                 {
                     try
                     {

@@ -175,3 +175,93 @@ C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.e
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.application
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.exe
 C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\KmK Business.pdb
+D:\projects\kmk-business\KmK Business\bin\Debug\KmK Business.exe.config
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.exe
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.pdb
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.csprojResolveAssemblyReference.cache
+D:\projects\kmk-business\KmK Business\obj\Debug\AccountWindow.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\AccountGroupBoxControl.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\CreateDB.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\languages\Dictionary.en-UK.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\PlanGroupBoxControl.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\PlanWindow.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\HyperlinkPropertiesDialog.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\MainViewStyles.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\Style\ControlsStyle.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\WindowPrintScreen.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\App.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\AccountWindow.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\AccountGroupBoxControl.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\CreateDB.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\Home.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\HomeStart.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\MainWindow.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\MenuNavigator.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\PlanGroupBoxControl.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\PlanWindow.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\RTFEditor.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\HyperlinkPropertiesDialog.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\TradingJournal.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\TradingPlan.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\WindowPrintScreen.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\App.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business_MarkupCompile.cache
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business_MarkupCompile.lref
+D:\projects\kmk-business\KmK Business\bin\Debug\KmK Business.exe.manifest
+D:\projects\kmk-business\KmK Business\bin\Debug\KmK Business.application
+D:\projects\kmk-business\KmK Business\bin\Debug\KmK Business.exe
+D:\projects\kmk-business\KmK Business\bin\Debug\KmK Business.pdb
+D:\projects\kmk-business\KmK Business\bin\Debug\EntityFramework.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\ServiceStack.OrmLite.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\ServiceStack.OrmLite.Sqlite.Windows.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\System.Data.SQLite.EF6.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\System.Data.SQLite.Linq.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\WPFControlsLibrary.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\WPFControlsLibraryInterface.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.DataGrid.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\EnvDTE.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\stdole.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\EntityFramework.xml
+D:\projects\kmk-business\KmK Business\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\kmk-business\KmK Business\bin\Debug\SQLite.Designer.pdb
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.Shell.Interop.xml
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.OLE.Interop.xml
+D:\projects\kmk-business\KmK Business\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.xml
+D:\projects\kmk-business\KmK Business\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\ImagePropertiesDialog.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\ImagePropertiesDialog.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\RTF\Controls\TablePropertiesDialog.g.cs
+D:\projects\kmk-business\KmK Business\obj\Debug\Home.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\HomeStart.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\MainWindow.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\MenuNavigator.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\RTFEditor.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\TradingJournal.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\TradingPlan.baml
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.g.resources
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK_Business.Properties.Res.resources
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK_Business.Properties.Resources.resources
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.csproj.GenerateResource.Cache
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.TrustInfo.xml
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.exe.manifest
+D:\projects\kmk-business\KmK Business\obj\Debug\KmK Business.application

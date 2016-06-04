@@ -23,22 +23,15 @@ namespace KmK_Business
     {
         public MainWindowViewModel vm;
         private MainWindow mw;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            if (DateTime.Now.Date > new DateTime(2015, 6 , 1))
-            {
-                MessageBox.Show("This alpha version has expired!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.Close();
-            }
-            else
-            {
-                mw = this;
-                vm = new MainWindowViewModel();
-                this.DataContext = vm;
-                App.CurrentWindow = new HomeStart();
-            }
+            mw = this;
+            vm = new MainWindowViewModel();
+            this.DataContext = vm;
+            App.CurrentWindow = new HomeStart();
         }
 
         public void ChangeWindow(object newControl=null)

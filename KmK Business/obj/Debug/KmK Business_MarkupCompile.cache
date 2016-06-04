@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\lci\Desktop\KmK Business full old\KmK Business\obj\Debug\
+D:\projects\kmk-business\KmK Business\obj\Debug\
 KmK_Business
 none
 false
 DEBUG;TRACE
-C:\Users\lci\Desktop\KmK Business full old\KmK Business\App.xaml
+D:\projects\kmk-business\KmK Business\App.xaml
 19476580137
 
 68148886128
-37-1986049264
+372055771494
 AccountWindow.xaml;AccountGroupBoxControl.xaml;CreateDB.xaml;Home.xaml;HomeStart.xaml;languages\Dictionary.en-UK.xaml;MainWindow.xaml;MenuNavigator.xaml;PlanGroupBoxControl.xaml;PlanWindow.xaml;RTFEditor.xaml;RTF\Controls\HyperlinkPropertiesDialog.xaml;RTF\Controls\ImagePropertiesDialog.xaml;RTF\Controls\MainViewStyles.xaml;RTF\Controls\TablePropertiesDialog.xaml;Style\ControlsStyle.xaml;TradingJournal.xaml;TradingPlan.xaml;WindowPrintScreen.xaml;
 
 False
